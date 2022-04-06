@@ -1,6 +1,6 @@
 {
-    "appId": "com.dev.soloaunclick",
-    "appName": "Soloaunclick",
+    "appId": "com.dev.market",
+    "appName": "AppMarket",
     "webDir": "www",
     "bundledWebRuntime": false
 }

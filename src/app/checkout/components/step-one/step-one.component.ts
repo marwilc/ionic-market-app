@@ -45,7 +45,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
         {
             id: 3,
             name: 'Retiro en Almacen',
-            firstAddress: 'Almacen Solo a Un Click. Freemarket',
+            firstAddress: 'Almacen market, valencia',
             phone: '04124080745',
         },
     ];

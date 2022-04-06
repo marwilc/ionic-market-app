@@ -1,7 +1,7 @@
 export const en = {
     general: {
         store: 'Store',
-        searchInSoloAUnClick: 'Search in SoloAUnClick',
+        searchInSoloAUnClick: 'Search in Market',
         groceries: 'Groceries',
         inStoreCode: 'In-Store-Code',
         video: 'Video',
@@ -64,12 +64,12 @@ export const en = {
         email: 'Email',
         youDontHaveAnyShared: 'You don´t have any shared lists yet.',
         askAFriendToShareTheirSoloAunClickListWithYou:
-            'Ask a friend to share their SoloAunClick list with you.',
+            'Ask a friend to share their Market list with you.',
         message: 'Message',
         thanks: 'Thanks',
         toViewAndShareYourListsVisit:
             'To view and share your lists, visit',
-        yourSoloAUnClickListsPage: 'Your SoloAUnClick Lists page.',
+        yourSoloAUnClickListsPage: 'Your Market Lists page.',
         createANewList: 'Create a new list',
         createList: 'Create list',
         listName: 'List name',
@@ -82,7 +82,7 @@ export const en = {
         freeShipping: 'Free Shipping',
         inTheCart: 'in the cart',
         seeRecommendations: 'See Recommendations',
-        yourSoloAUnClickCartIsEmpty: 'Your SoloAUnClickCart Is Empty',
+        yourSoloAUnClickCartIsEmpty: 'Your MarketCart Is Empty',
         paymentProcess: 'Payment process',
         stepOneSelectShippingAddress:
             'Step 1: Select a shipping address',

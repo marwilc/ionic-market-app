@@ -1,4 +1,4 @@
-package com.dev.soloaunclick;
+package com.dev.market;
 
 import com.getcapacitor.BridgeActivity;
 

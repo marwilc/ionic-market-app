@@ -76,23 +76,23 @@ export class StepFourComponent implements OnInit {
 
     accountPayments: AccountPayment[] = [
         {
-            mail: 'soloaunclick@gmail.com',
-            name: 'solo a un click LLC',
+            mail: 'market@gmail.com',
+            name: 'App Market',
             description:
                 'Antes de hacer el pago, por favor, verificar el correo:',
             type: AccountEnum.ZELLE,
             image: 'assets/images/zelle_1.jpg',
         },
         {
-            mail: 'soloaunclick2@gmail.com',
-            name: 'solo a un click LLC',
+            mail: 'market2@gmail.com',
+            name: 'Market LLC',
             description:
                 'Antes de hacer el pago, por favor, verificar el correo:',
             type: AccountEnum.ZELLE,
             image: 'assets/images/zelle_2.jpg',
         },
         {
-            mail: 'https://paypal.me/soloaunclick?locale.x=en_US',
+            mail: 'https://paypal.me/market?locale.x=en_US',
             name: 'paypal',
             description:
                 'Si tienes cuenta PayPal, haz click en el siguiente enlace y coloca el monto a pagar y envíanos Saldo PayPal.',

@@ -1,7 +1,7 @@
 export const es = {
     general: {
         store: 'Tienda',
-        searchInSoloAUnClick: 'Buscar en Soloaunclick',
+        searchInSoloAUnClick: 'Buscar en Mercado',
         groceries: 'Comestibles',
         inStoreCode: 'In-Store-Code',
         video: 'Video',
@@ -65,13 +65,12 @@ export const es = {
         youDontHaveAnyShared:
             'Aún no tienes ninguna lista compartida.',
         askAFriendToShareTheirSoloAunClickListWithYou:
-            'Pídale a un amigo que comparta su lista de SoloAunClick con usted.',
+            'Pídale a un amigo que comparta su lista de Mercado con usted.',
         message: 'Mensaje',
         thanks: 'Gracias',
         toViewAndShareYourListsVisit:
             'Para ver y compartir sus listas, visite',
-        yourSoloAUnClickListsPage:
-            'Su página de listas de SoloAUnClick.',
+        yourSoloAUnClickListsPage: 'Su página de listas de Mercado.',
         createANewList: 'Crear una nueva lista',
         createList: 'Crear lista',
         listName: 'Nombre de la lista',
@@ -84,8 +83,7 @@ export const es = {
         freeShipping: 'Envío gratis',
         inTheCart: 'en el carrito',
         seeRecommendations: 'Ver Recomendaciones',
-        yourSoloAUnClickCartIsEmpty:
-            'Su carrito SoloAUnClick está vacío',
+        yourSoloAUnClickCartIsEmpty: 'Su carrito Mercado está vacío',
         paymentProcess: 'Proceso de pago',
         stepOneSelectShippingAddress:
             'Paso 1: Selecciona una dirección de envío',
