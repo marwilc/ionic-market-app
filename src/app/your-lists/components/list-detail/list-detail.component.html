@@ -1,0 +1,303 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+<ion-content>
+
+
+    <div class="section">
+        <div class="container">
+            <div fxLayout="row"
+                 class="ion-justify-content-between title ">
+                <div>
+                    <h1>Lista de Compras</h1>
+                    <p>Private</p>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutGap="5px"
+                     class="ion-align-items-center">
+                    <a href="">View lists</a>
+                    <div class="line"></div>
+                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div fxLayout="row"
+                 class="ion-justify-content-between">
+                <div class="ion-align-items-center option"
+                     fxLayout="row"
+                     fxLayoutGap="5px">
+                    <ion-icon name="person-add-outline"></ion-icon>
+                    <h2>Invite</h2>
+                </div>
+                <div class="ion-align-items-center ion-justify-content-evenly option2"
+                     fxLayout="row"
+                     fxLayoutGap="5px">
+                    <ion-icon [ngClass]="{'dark': typeView === 'list'}"
+                              (click)="changeToList()"
+                              name="reorder-four-outline"></ion-icon>
+                    <div class="division"></div>
+                    <ion-icon [ngClass]="{'dark': typeView === 'grid'}"
+                              name="grid-outline"
+                              (click)="changeToGrid()"></ion-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="typeView === 'list'">
+
+        <div class="section">
+            <div class="container">
+                <div class="product-list"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <img src="assets/images/producto-4.png"
+                         alt="">
+                    <div>
+                        <h2 class="text2lines">Jabon vale BEBE Cuida y limpia tu ropa al máximo, protección para toda la familia, 400g </h2>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <h2>$3.45</h2>
+                            <a href=""> FREE Shipping</a>
+                        </div>
+                        <p>Color: WHITE</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <p>12 Used & New</p>
+                            <p>from <span>$3.45</span></p>
+                        </div>
+                        <p>Item added July 23,2021</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="20px"
+                             class="ion-align-items-center button-add">
+                            <ion-button>
+                                Add to Cart
+                            </ion-button>
+                            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="section">
+            <div class="container">
+                <div class="product-list"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <img src="assets/images/producto-5.png"
+                         alt="">
+                    <div>
+                        <h2 class="text2lines">Papel para Baño Scott, rindeMax Premium, 4 rollos 400 metros </h2>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <h2>$3.45</h2>
+                            <a href=""> FREE Shipping</a>
+                        </div>
+                        <p>Color: WHITE</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <p>12 Used & New</p>
+                            <p>from <span>$3.45</span></p>
+                        </div>
+                        <p>Item added July 23,2021</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="20px"
+                             class="ion-align-items-center button-add">
+                            <ion-button>
+                                Add to Cart
+                            </ion-button>
+                            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="section">
+            <div class="container">
+                <div class="product-list"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <img src="assets/images/producto-4.png"
+                         alt="">
+                    <div>
+                        <h2 class="text2lines">Jabon vale BEBE Cuida y limpia tu ropa al máximo, protección para toda la familia, 400g </h2>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <h2>$3.45</h2>
+                            <a href=""> FREE Shipping</a>
+                        </div>
+                        <p>Color: WHITE</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <p>12 Used & New</p>
+                            <p>from <span>$3.45</span></p>
+                        </div>
+                        <p>Item added July 23,2021</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="20px"
+                             class="ion-align-items-center button-add">
+                            <ion-button>
+                                Add to Cart
+                            </ion-button>
+                            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="section">
+            <div class="container">
+                <div class="product-list"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <img src="assets/images/producto-5.png"
+                         alt="">
+                    <div>
+                        <h2 class="text2lines">Papel para Baño Scott, rindeMax Premium, 4 rollos 400 metros </h2>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <h2>$3.45</h2>
+                            <a href=""> FREE Shipping</a>
+                        </div>
+                        <p>Color: WHITE</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="10px">
+                            <p>12 Used & New</p>
+                            <p>from <span>$3.45</span></p>
+                        </div>
+                        <p>Item added July 23,2021</p>
+                        <div fxLayout="row"
+                             fxLayoutGap="20px"
+                             class="ion-align-items-center button-add">
+                            <ion-button>
+                                Add to Cart
+                            </ion-button>
+                            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Producto en Grid -->
+
+    <div *ngIf="typeView === 'grid'"
+         class="container"
+         fxLayout="row warp"
+         fxLayoutGap="10px">
+
+        <div class="content-grid"
+             fxFlex="calc(50% - 10px)">
+            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+            <img src="assets/images/producto-5.png"
+                 alt="">
+            <h2>$3.45</h2>
+
+            <ion-button>
+                Add to Card
+            </ion-button>
+        </div>
+
+        <div class="content-grid"
+             fxFlex="calc(50% - 10px)">
+            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+            <img src="assets/images/producto-4.png"
+                 alt="">
+            <h2>$3.45</h2>
+            <ion-button>
+                Add to Card
+            </ion-button>
+        </div>
+
+        <div class="content-grid"
+             fxFlex="calc(50% - 10px)">
+            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+            <img src="assets/images/producto-5.png"
+                 alt="">
+            <h2>$3.45</h2>
+            <ion-button>
+                Add to Card
+            </ion-button>
+        </div>
+
+        <div class="content-grid"
+             fxFlex="calc(50% - 10px)">
+            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+            <img src="assets/images/producto-4.png"
+                 alt="">
+            <h2>$3.45</h2>
+            <ion-button>
+                Add to Card
+            </ion-button>
+        </div>
+    </div>
+
+
+
+    <div class="section">
+        <div class="container">
+            <h2 class="ion-text-center">End of list</h2>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div fxLayout="row"
+                 class="ion-justify-content-between ion-align-items-center">
+                <h1>Inspired by your list</h1>
+                <ion-icon (click)="ToggleButton()"
+                          name="chevron-down-outline"></ion-icon>
+            </div>
+
+
+            <div *ngIf="showSelected"
+                 class="slide">
+                <ion-slides pager="false"
+                            [options]="slideOpts">
+                    <ion-slide fxLayout="column"
+                               class="ion-align-items-start">
+                        <img src="assets/images/articulo-1.jpg"
+                             alt="">
+                        <a href="">ADD TO LIST</a>
+                    </ion-slide>
+                    <ion-slide fxLayout="column"
+                               class="ion-align-items-start">
+                        <img src="assets/images/articulo-2.png"
+                             alt="">
+                        <a href="">ADD TO LIST</a>
+                    </ion-slide>
+                    <ion-slide fxLayout="column"
+                               class="ion-align-items-start">
+                        <img src="assets/images/articulo-3.png"
+                             alt="">
+                        <a href="">ADD TO LIST</a>
+
+                    </ion-slide>
+                    <ion-slide fxLayout="column"
+                               class="ion-align-items-start">
+                        <img src="assets/images/articulo-4.png"
+                             alt="">
+                        <a href="">ADD TO LIST</a>
+                    </ion-slide>
+                </ion-slides>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</ion-content>

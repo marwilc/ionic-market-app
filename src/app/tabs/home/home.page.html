@@ -1,0 +1,271 @@
+<app-search-header></app-search-header>
+
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed"
+                   (ionRefresh)="fetchInitial()">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <!-- segments subheader -->
+    <app-segment-header fxHide
+                        [segments]="homeSegments">
+    </app-segment-header>
+
+    <ion-progress-bar type="indeterminate"
+                      class="progress-bar"
+                      *ngIf="statusHome === statusFetching.FETCHING">
+    </ion-progress-bar>
+
+
+    <ng-container [ngSwitch]="statusHome">
+
+        <!-- fetched  -->
+        <ng-container *ngSwitchCase="statusFetching.FETCHED">
+            <app-location-header></app-location-header>
+
+            <!-- slides section -->
+            <div fxHide>
+                <!-- main slide -->
+                <ion-slides pager="false"
+                            #mainSlides
+                            [options]="mainSlidesOpts">
+
+                    <ion-slide class="h-100"
+                               *ngFor="let slide of mainSlidesItems">
+                        <img [src]="slide.image"
+                             alt="">
+                    </ion-slide>
+                </ion-slides>
+
+                <!-- feature slides -->
+                <div class="feature-slide-container">
+                    <ion-slides class="ion-feature-slide"
+                                pager="false"
+                                [options]="featureSlidesOpts">
+                        <ion-slide>
+                            <ion-card class="card-product">
+                                <ion-card-header>
+                                    <p> {{user.firstName}}</p>
+                                    <img class="box"
+                                         src="assets/images/slide-1.jpg"
+                                         alt="">
+                                </ion-card-header>
+
+                                <ion-card-content>
+                                    <a href="">{{'general.yourOrders' | translate}}</a>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-slide>
+                        <ion-slide *ngFor="let product of featureProducts">
+                            <ion-card class="card-product">
+                                <ion-card-header>
+                                    <img [src]="product.image"
+                                         alt="">
+                                </ion-card-header>
+
+                                <ion-card-content>
+                                    <p class="text2lines">{{product.name}}</p>
+                                    <p class="slide-subtitle">{{product.price | currency}}</p>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-slide>
+                    </ion-slides>
+                </div>
+            </div>
+
+            <!-- Popular near you -->
+
+            <div class="section">
+                <h1>{{'general.popularNearYou' | translate}}</h1>
+
+                <app-product-carousel [products]="popularNearYouProducts">
+                </app-product-carousel>
+
+            </div>
+
+            <div class="section">
+                <h1>{{'general.trendingNearYou' | translate}}</h1>
+
+                <app-product-carousel [products]="trendingNearYouProducts">
+                </app-product-carousel>
+
+            </div>
+
+
+            <div class="section">
+                <h1>{{'general.popularNearYou' | translate}}</h1>
+
+                <app-product-carousel [products]="popularNearYouProducts">
+                </app-product-carousel>
+
+            </div>
+
+            <div class="section">
+                <h1>{{'general.trendingNearYou' | translate}}</h1>
+
+                <app-product-carousel [products]="trendingNearYouProducts">
+                </app-product-carousel>
+
+            </div>
+
+            <!-- deal of day section -->
+            <div class="container container-content"
+                 fxHide>
+                <h1>
+                    {{'general.dealOfTheDay' | translate}}
+                </h1>
+                <img [src]="dealOfDay.image"
+                     alt="">
+                <h2>{{dealOfDay.name}}</h2>
+                <h3><sup>US$</sup>{{dealOfDay.discountPrice}} - <sup>US$</sup>{{dealOfDay.price}}</h3>
+                <h3>{{'general.endsIn' | translate}} {{dealOfDay.ends}}</h3>
+                <a href=""> {{'general.seeMore' | translate}}</a>
+            </div>
+
+            <!--  related products section -->
+            <div class="container"
+                 fxHide>
+                <h1>
+                    {{'general.relatedToTheItems' | translate}}
+                </h1>
+                <div fxLayout="row wrap">
+                    <div fxFlex="50"
+                         class="product"
+                         *ngFor="let product of relatedProducts">
+                        <img [src]="product.image"
+                             alt="">
+                        <p class="text-ellipsis">{{product.name}}</p>
+                        <p>{{product.price | currency}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- popular products section -->
+            <div class="container"
+                 fxHide>
+                <h1>
+                    {{'general.popularProducts' | translate}}
+                </h1>
+                <div fxLayout="row wrap">
+                    <div fxFlex="50"
+                         class="product"
+                         *ngFor="let product of popularProducts">
+                        <img [src]="product.image"
+                             alt="">
+                        <p class="text-ellipsis">{{product.name}}</p>
+                        <p>{{product.price | currency}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- offer for you section  -->
+            <div class="container"
+                 fxHide>
+                <h1>
+                    {{'general.recommendedOffersForYou' | translate}}
+                </h1>
+                <div fxLayout="column">
+                    <div class="product-list"
+                         fxLayout="row"
+                         *ngFor="let product of recommendedProducts">
+                        <img [src]="product.image"
+                             alt=""
+                             fxFlex="70px">
+                        <div fxLayout="column"
+                             fxFlex="calc(100% - 90px)">
+                            <div fxLayout="row"
+                                 fxLayoutGap="10px">
+
+                                <p class="text-ellipsis"><sup>US$</sup>{{product.discountPrice}}</p>
+                                <p class="text-strike-through text-ellipsis"><sup>US$</sup>{{product.price}}</p>
+                            </div>
+
+                            <p class="text-ellipsis">{{product.name}}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="">{{'general.seeAllOffers' | translate }}</a>
+            </div>
+
+            <!-- other section -->
+            <div class="container"
+                 fxHide>
+                <h1>
+                    {{'general.airConditioners' | translate}}
+                </h1>
+                <div fxLayout="row wrap">
+                    <div fxFlex="50"
+                         class="product"
+                         *ngFor="let product of otherProducts">
+                        <img [src]="product.image"
+                             alt="">
+
+                    </div>
+                </div>
+                <a href="">{{'general.customerFavorites' | translate}}</a>
+            </div>
+
+            <!-- final section -->
+            <div class="end-section"
+                 fxLayout="row">
+                <div fxFlex
+                     fxLayoutAlign="center center"> <span fxHide
+                          class="line"></span></div>
+                <div fxHide>
+                    <p>{{'general.youReachedTheEndKeepExploring' | translate}}</p>
+                </div>
+                <div fxFlex
+                     fxLayoutAlign="center center"> <span fxHide
+                          class="line"></span></div>
+            </div>
+
+            <!-- explore departments-->
+            <div class="departments">
+                <h1 [ngStyle.xs]="{'font-size': '18px'}"
+                    [ngStyle.gt-xs]="{'font-size': '25px'}">
+                    {{'general.browseDepartments' | translate}}
+                </h1>
+                <div fxLayout="row wrap"
+                     fxLayoutGap="5px">
+                    <div class="product-department"
+                         fxFlex="calc(50% - 5px)"
+                         *ngFor="let department of departMents">
+                        <img [src]="department.image"
+                             alt="">
+                        <p [ngStyle.xs]="{'margin-top': '-120px'}"
+                           [ngStyle.sm]="{'margin-top': '-210px', 'font-size': '25px'}"
+                           [ngStyle.md]="{'margin-top': '-300px','font-size': '35px'}"
+                           [ngStyle.gt-md]="{'margin-top': '-400px','font-size': '40px'}"
+                           class="text-ellipsis">{{department.name}}</p>
+                    </div>
+                </div>
+                <a href="">{{'general.allTheDepartments' | translate}}</a>
+            </div>
+
+        </ng-container>
+
+        <!-- loading  -->
+        <ng-container *ngSwitchCase="statusFetching.FETCHING">
+            <div class="content-center w-100 h-100">
+                <ion-spinner color="primary"></ion-spinner>
+            </div>
+        </ng-container>
+
+        <!-- failed fetch -->
+        <ng-container *ngSwitchDefault>
+            <div class="content-center w-100 h-100">
+                <ion-button (click)="fetchInitial()"
+                            expand="block"
+                            fill="clear"
+                            shape="round"
+                            slot="icon-only">
+                    <ion-icon name="refresh-circle-outline"></ion-icon>
+                    {{'general.retry' | translate}}
+                </ion-button>
+            </div>
+        </ng-container>
+
+    </ng-container>
+
+</ion-content>

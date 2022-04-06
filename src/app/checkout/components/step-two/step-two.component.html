@@ -1,0 +1,130 @@
+<ion-list>
+    <ion-radio-group [value]="daySelected"
+                     (ionChange)="onChangeDay($event)">
+        <div fxLayout="row"
+             fxLayoutGap="5px">
+            <ion-item lines="none"
+                      *ngFor="let day of shippingDays"
+                      [ngClass]="{'selected-radio': day === daySelected }"
+                      class="date">
+                <div fxLayout="column">
+                    <div fxLayout="row"
+                         fxLayoutAlign="center center">
+                        <ion-radio class="radio-day"
+                                   slot="start"
+                                   [value]="day">
+                        </ion-radio>
+
+                        <ion-label class="day">
+                            <h2>{{day.label | titlecase}}</h2>
+                        </ion-label>
+                    </div>
+                    <p class="ion-text-center">
+                        {{day.date | date: 'd MMM' | titlecase}}
+                    </p>
+                </div>
+            </ion-item>
+
+        </div>
+
+    </ion-radio-group>
+</ion-list>
+
+<ion-list>
+    <ion-radio-group [value]="shippingOpSelected"
+                     (ionChange)="onChangeShippingOp($event)">
+
+        <ion-item lines="none"
+                  [ngClass]="{'selected-radio': option === shippingOpSelected }"
+                  *ngFor="let option of shippingTimeOps | filter:'type': daySelected.type"
+                  class="total">
+            <ion-radio class="mr-16 ml-10"
+                       slot="start"
+                       [value]="option">
+            </ion-radio>
+            <div fxLayout.xs="column"
+                 fxLayout.gt-xs="row"
+                 class="w-100"
+                 fxLayoutAlign="space-evenly start"
+                 fxLayoutGap="16px">
+                <ion-label>
+                    <h1>
+                        {{option.name | translate}} - {{option.hours}} {{ (option.hours | i18nPlural: messageMapping )| translate }}
+                    </h1>
+                    <p>{{option.price * bolivarXDollar | currency:'VES': vesCurrency}}</p>
+                    <p>{{option.description | translate}}</p>
+                </ion-label>
+
+                <div>
+                    <h2>{{'general.totalShipping' | translate}}</h2>
+                    <p>{{option.total * bolivarXDollar | currency:'VES': vesCurrency }} </p>
+                    <p>{{option.total | currency}} </p>
+                </div>
+            </div>
+        </ion-item>
+
+    </ion-radio-group>
+</ion-list>
+
+<ion-list class="no-border ion-no-padding"
+          *ngIf="shippingOpSelected.type === shippingTypes.PROGRAMMED">
+    <ion-radio-group [value]="hourSelected"
+                     (ionChange)="onChangeHour($event)"
+                     fxLayout="row wrap">
+        <ion-item lines="none"
+                  fxFlex="calc(50% - 5px)"
+                  *ngFor="let hour of availableHours"
+                  [ngClass]="{'selected-radio': hour === hourSelected }"
+                  class="time mr-5">
+
+            <ion-radio class="radio-day"
+                       slot="start"
+                       [value]="hour">
+            </ion-radio>
+            <h2>{{hour}}</h2>
+        </ion-item>
+
+    </ion-radio-group>
+</ion-list>
+
+<div class="tips">
+    <h2>{{'general.selectATip' | translate}}</h2>
+    <div fxLayout="row wrap">
+        <ion-text fxFlex="calc(50% - 5px)"
+                  class="mr-5"
+                  (click)="selectTip(tip)"
+                  [ngClass]="{'selected-tip': selectedTip === tip}"
+                  *ngFor="let tip of tips">
+            {{tip | currency}}
+        </ion-text>
+    </div>
+</div>
+
+<div class="edited-tips">
+    <div class="input mb-16"
+         [ngClass]="{'input-invalid': tipControl.invalid}">
+        <ion-label>{{'general.youCanEditThisAmount' | translate}}</ion-label>
+        <ion-input [placeholder]="5"
+                   [formControl]="tipControl"
+                   type="number"
+                   inputmode="numeric">
+        </ion-input>
+        <app-ion-error *ngIf="tipControl.hasError('pattern')">
+            <span ionError>
+                {{'general.onlyNumbers' | translate}}
+            </span>
+        </app-ion-error>
+    </div>
+
+    <p class="ion-text-center">
+        {{'general.tipDescription' | translate}}
+    </p>
+</div>
+
+<p class="ion-text-center text-tips">{{'general.equivalentTipInBs' | translate}}</p>
+<p class="ion-text-center total-tips">{{equivalentTipInBs | currency:'VES': vesCurrency}}</p>
+
+<ion-button (click)="continue()"
+            class="btn">
+    {{'general.continue' | translate}}
+</ion-button>

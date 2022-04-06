@@ -1,0 +1,105 @@
+<app-search-header></app-search-header>
+
+<ion-content>
+
+
+    <app-segment-header fxHide
+                        [segments]="cartSegments">
+    </app-segment-header>
+
+    <app-location-header></app-location-header>
+
+    <div class="main-container"
+         *ngIf="productsInCart.length > 0">
+        <div class="section">
+            <div class="watch">
+                <h1>
+                    {{'general.subtotal' | translate}}
+                    {{subtotal | currency}}
+                </h1>
+                <div class="information">
+                    <ion-icon name="information-circle"
+                              size="large"
+                              color="primary">
+                    </ion-icon>
+                    <p>{{'general.addOfEligibleProducts' | translate}}<a href=""> {{'general.seeDetail' | translate}}</a> </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div [ngClass]="{'fixed': buttonCheckoutIntersect, 'fondo-button': buttonCheckoutIntersect}">
+            <ion-button class="button-g ion-no-border"
+                        mode="md"
+                        [routerLink]="['checkout']"
+                        expand="block">{{'general.proceedToPayment' | translate}} ( {{nProductsInCart}} {{ (nProductsInCart | i18nPlural: messageMapping )| translate }})
+            </ion-button>
+        </div>
+
+
+
+        <div class="checkbox-container"
+             fxHide>
+            <ion-checkbox color="primary"
+                          checked="false">
+            </ion-checkbox>
+            <p>{{'general.addAGiftReceiptForEasyReturns' | translate}}</p>
+        </div>
+
+        <div class="section"
+             *ngFor="let product of productsInCart">
+            <div class="cart-product">
+
+                <img [src]="product.image"
+                     [routerLink]="['product', product.id]">
+
+                <div class="product-container">
+                    <p class="title"
+                       [routerLink]="['product', product.id]">{{product.name}}</p>
+                    <p class="price"> {{product.price | currency}}</p>
+                    <ion-note color="success"
+                              *ngIf="product.freeShipping">
+                        {{(product.freeShipping | freeShipping:10:'$') | translate | uppercase}}
+                    </ion-note>
+                    <p class="shipping-time"
+                       *ngIf="product.shippingTime">{{product.shippingTime}}</p>
+                </div>
+            </div>
+
+            <!-- // modificar la seleccion de numeros -->
+
+            <div fxLayout="row"
+                 class="quantity">
+                <ion-button fill="clear"
+                            (click)="decrementQuantity(product)">
+                    <ion-icon [name]="product.quantity > 1 ? 'remove-outline' : 'trash-outline'"
+                              slot="icon-only"></ion-icon>
+                </ion-button>
+                <p>{{product.quantity}}</p>
+                <ion-button fill="clear"
+                            (click)="incrementQuantity(product)">
+                    <ion-icon name="add-outline"
+                              slot="icon-only"></ion-icon>
+                </ion-button>
+
+            </div>
+
+            <div class="mt-5">
+                <ion-button fill="outline"
+                            (click)="removeCompleteProductFromCart(product)"
+                            class="ion-text-capitalize text-xs square-button">{{'general.remove' | translate}}
+                </ion-button>
+                <ion-button fill="outline"
+                            fxHide
+                            class="ion-text-capitalize text-xs square-button">{{'general.saveForLater' | translate}}
+                </ion-button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty cart  -->
+    <app-empty-cart *ngIf="productsInCart.length === 0">
+    </app-empty-cart>
+
+
+</ion-content>

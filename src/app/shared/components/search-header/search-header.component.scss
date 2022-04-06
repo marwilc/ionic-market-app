@@ -1,0 +1,12 @@
+.search {
+    padding-left: 16px;
+    padding-right: 16px;
+    --border-radius: 5px;
+    --background: var(--ion-color-search-bar);
+    color: var(--ion-color-step-500);
+    --box-shadow: none;
+}
+
+ion-toolbar {
+    --background: var(--ion-color-header);
+}

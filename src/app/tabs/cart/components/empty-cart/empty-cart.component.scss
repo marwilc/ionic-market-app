@@ -1,0 +1,86 @@
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+h2 {
+    font-size: 14px;
+    color: var(--ion-color-amazon-links-green);
+    margin-top: 5px;
+}
+
+h3 {
+    font-size: 14px;
+    color: var(--ion-color-amazon-red);
+    font-weight: bold;
+    margin-top: 5px;
+}
+.contenedor-principal {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.section {
+    border-bottom: 1px solid var(--ion-color-amazon-gray-3);
+    padding-bottom: 15px;
+}
+
+.carro-vacio {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    img {
+        width: 100px;
+    }
+
+    .texto-carro {
+        font-size: 13px;
+        margin-left: 10px;
+    }
+
+    .texto-carro a {
+        text-decoration: none;
+        color: var(--ion-color-amazon-links-green);
+    }
+}
+
+.border-top {
+    border-top: 1px solid var(--ion-color-amazon-gray-3);
+    margin-top: 15px;
+}
+
+.text-align {
+    text-align: left;
+}
+.add-producto {
+    img {
+        width: 120px;
+        height: 100px;
+    }
+
+    button {
+        padding: 10px 13px;
+        background-color: var(--ion-color-amazon-button-yellow);
+        color: black;
+        border-radius: 6px;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.button-G {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    padding: 13px 0;
+    background-color: var(--ion-color-amazon-button-yellow);
+    color: black;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,25 @@
+<ion-slides pager="false"
+            [options]="slideOpts">
+
+    <ion-slide fxLayout="column"
+               class="slide-product"
+               *ngFor="let product of products">
+        <ion-note [ngStyle]="{'height': '23px'}"
+                  [ngClass]="{'grey': quantity(product) !== ''}">{{quantity(product)}} </ion-note>
+        <img [src]="product.image"
+             [routerLink]="['product', product.id]">
+        <div class="ion-text-start w-100">
+            <h2 class="text2lines"
+                [routerLink]="['product', product.id]">{{product.name}}</h2>
+            <h3>{{product.price}}</h3>
+            <ion-button (click)="
+                addToCart(product)"
+                        class="text-xs"
+                        size="large">
+                <ion-label>
+                    {{'general.addToCart' | translate}}
+                </ion-label>
+            </ion-button>
+        </div>
+    </ion-slide>
+</ion-slides>

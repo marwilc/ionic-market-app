@@ -1,0 +1,74 @@
+<app-search-header></app-search-header>
+
+<ion-content>
+    <div class="main-container">
+
+        <ion-list>
+            <ion-item [routerLink]="['your-orders']">
+                <ion-label>Your Orders</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Buy Again</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label [routerLink]="['/tabs/account/your-lists']">Your lists</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Your Account</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label (click)="ToggleButton()">Programs & Features</ion-label>
+
+            </ion-item>
+            <div *ngIf="showSelected">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+
+                </ul>
+            </div>
+            <ion-item>
+                <ion-label (click)="ToggleButton2()">Shop by Department</ion-label>
+
+
+            </ion-item>
+            <div *ngIf="showSelected2">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+
+                </ul>
+            </div>
+            <ion-item>
+                <ion-label (click)="ToggleButton3()"
+                           fxLayout="row"
+                           class="ion-align-items-center"
+                           id="item-1">Settings <img class="flag"
+                         src="assets/images/banderaEUU.png"
+                         alt=""></ion-label>
+
+
+            </ion-item>
+
+            <div *ngIf="showSelected3">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                </ul>
+            </div>
+            <ion-item>
+                <ion-label>Customer Service</ion-label>
+
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+</ion-content>

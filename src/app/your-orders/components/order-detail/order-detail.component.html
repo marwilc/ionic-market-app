@@ -1,0 +1,109 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+
+<ion-content>
+
+    <div class="section">
+
+
+        <div class="container">
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 class="ion-justify-content-around">
+                <img src="assets/images/producto-4.png"
+                     slot="start"
+                     [ngStyle.xs]="{'width': '90px'}"
+                     [ngStyle.sm]="{'width': '150px'}"
+                     [ngStyle.md]="{'width': '170px'}"
+                     [ngStyle.gt-md]="{'width': '200px'}">
+
+
+                <div fxFlex="40%"
+                     fxFlexFill>
+
+                    <div>
+                        <p class="text2lines">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+
+                    <div fxLayout="row"
+                         fxLayoutAlign="center center"
+                         fxLayoutGap="10px">
+                        <ion-icon name="push-outline"></ion-icon>
+                        <p class="ion-no-margin">
+                            Share this item
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mt-16">
+                <ion-item detail
+                          button
+                          [routerLink]="[1]">
+
+                    <ion-label class="label">
+                        Buy it again
+                    </ion-label>
+                </ion-item>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div fxLayout="row"
+                 fxLayoutGap="10px"
+                 class="ion-align-items-center">
+                <ion-checkbox></ion-checkbox>
+                <p class="ion-no-margin font-weight">Delivered</p>
+            </div>
+
+            <div class="mt-16">
+                <ion-item detail
+                          button
+                          [routerLink]="[1]">
+
+                    <ion-label>
+                        Track package
+                    </ion-label>
+                </ion-item>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+
+            <p class="ion-no-margin font-weight">Need help with your item?</p>
+
+
+            <div class="mt-16">
+                <ion-item detail
+                          button
+                          [routerLink]="[1]">
+
+                    <ion-label>
+                        Get product support
+                    </ion-label>
+                </ion-item>
+            </div>
+
+            <div class="mt-5">
+                <ion-item detail
+                          button
+                          [routerLink]="[1]">
+
+                    <ion-label>
+                        Return or replace items
+                    </ion-label>
+                </ion-item>
+            </div>
+
+        </div>
+    </div>
+
+</ion-content>

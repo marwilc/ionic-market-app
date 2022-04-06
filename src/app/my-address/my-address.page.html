@@ -1,0 +1,67 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+
+<ion-content>
+
+    <ion-list>
+
+        <ion-list-header>
+            <ion-label class="text-strong">{{ 'general.yourAddresses' | translate}}</ion-label>
+        </ion-list-header>
+
+        <ion-item class="item-list"
+                  button
+                  detail
+                  (click)="addNewAddress()">
+            <ion-label>{{'general.addANewAddress' | translate}}</ion-label>
+        </ion-item>
+
+
+    </ion-list>
+
+    <ion-list>
+
+        <ion-list-header>
+            <ion-label class="text-strong">{{ 'general.personalAddress' | translate}}</ion-label>
+        </ion-list-header>
+
+        <ion-searchbar (ionChange)="onSearch($event)"></ion-searchbar>
+
+        <ion-card class="ion-padding"
+                  *ngFor="let address of addresses">
+
+            <div fxLayout="column">
+                <ion-label class="text-strong">
+                    {{address.name}}
+                </ion-label>
+
+                <ion-label>
+                    {{address.firstAddress}}
+                </ion-label>
+
+                <ion-label>
+                    {{address.secondAddress}}
+                </ion-label>
+
+                <ion-label>
+                    {{address.country}}
+                </ion-label>
+
+                <ion-label>
+                    {{'general.numberPhone' | translate}}: {{address.phone}}
+                </ion-label>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start">
+                <ion-button color="light"
+                            class="ion-text-capitalize"
+                            (click)="editAddress(address)"> {{'general.edit' | translate}}</ion-button>
+                <ion-button color="light"
+                            class="ion-text-capitalize"
+                            (click)="discardAddress(address)">{{'general.discard' | translate}}</ion-button>
+            </div>
+        </ion-card>
+
+    </ion-list>
+
+</ion-content>

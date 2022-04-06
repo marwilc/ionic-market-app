@@ -1,0 +1,209 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+
+        <ion-img src="assets/icon/logo.png">
+
+        </ion-img>
+
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only"
+                          name="notifications-outline">
+                </ion-icon>
+            </ion-button>
+            <ion-button>
+                <ion-icon slot="icon-only"
+                          name="search-outline">
+                </ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="section ion-padding">
+
+        <ion-item lines="none">
+            <ion-label>
+                <h1>{{'general.hello' | translate}}, <span>{{user.firstName}}</span></h1>
+            </ion-label>
+
+            <ion-icon name="person-circle-outline"
+                      size="large"
+                      color="primary"
+                      slot="end">
+            </ion-icon>
+        </ion-item>
+
+        <div class="options"
+             fxLayout="row wrap">
+
+            <ion-button expand="block"
+                        fxFlex
+                        fill="outline"
+                        class="ion-text-capitalize out-line"
+                        shape="round"
+                        [routerLink]="[option.router]"
+                        *ngFor="let option of firstSectionOptions">
+                {{option.name | translate}}
+            </ion-button>
+        </div>
+
+        <div class="ion-margin-top"
+             fxLayout="column">
+
+            <h2>{{'general.yourOrders' | translate}}</h2>
+            <p>{{'general.helloYouHaveNoRecentOrders' | translate}}</p>
+
+            <ion-button expand="block"
+                        fill="outline"
+                        class="ion-text-capitalize out-line"
+                        shape="round"
+                        [routerLink]="['/tabs','home']">
+                {{'general.backToTheMainPage' | translate}}
+            </ion-button>
+
+        </div>
+    </div>
+
+    <!-- Your Lists -->
+    <div class="section ion-padding">
+
+        <ion-item lines="none">
+            <ion-label>
+                <h2>{{'general.yourLists' | translate}}</h2>
+            </ion-label>
+
+            <a slot="end"
+               href="">{{'general.seeEverything' | translate}}
+            </a>
+        </ion-item>
+
+        <div class="lists"
+             fxLayout="row">
+            <ion-card fxLayout="row">
+                <ion-card-header>
+
+                    <ion-card-title>
+                        {{'general.shoppingList' | translate}}
+                    </ion-card-title>
+                    <ion-card-subtitle>
+                        {{'general.privatePreDetermined' | translate}}
+                    </ion-card-subtitle>
+
+                </ion-card-header>
+
+                <ion-card-content>
+                    <img src="assets/images/producto-4.png"
+                         alt="">
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+
+    <div class="section ion-padding">
+        <h2>{{'general.buyAgain' | translate}}</h2>
+        <p>{{'general.findOutWhatOther' | translate}}</p>
+        <ion-button expand="block"
+                    fill="outline"
+                    class="ion-text-capitalize out-line"
+                    shape="round">
+            {{'general.visitBuyAgain' |translate}}
+        </ion-button>
+    </div>
+
+    <div class="section ion-padding">
+
+        <ion-item lines="none">
+            <ion-label>
+                <h2>{{'general.yourAccount' | translate}}</h2>
+            </ion-label>
+
+            <a slot="end"
+               href="">{{'general.seeEverything' | translate}}
+            </a>
+        </ion-item>
+
+        <div class="row-segment">
+            <ion-button *ngFor="let segment of accountSegments"
+                        fill="clear"
+                        class="ion-text-capitalize text-xs square-button"
+                        [routerLink]="[segment.router]">
+                {{segment.name | translate}}
+            </ion-button>
+        </div>
+    </div>
+
+    <div class="section ion-padding">
+
+        <ion-item lines="none">
+            <ion-label>
+                <h2>{{'general.keepBuying' | translate}}</h2>
+            </ion-label>
+
+            <a slot="end"
+               href="">{{'general.edit' | translate}}
+            </a>
+        </ion-item>
+
+        <ion-slides pager="false"
+                    [options]="slideKeepBuyOpts">
+
+            <ion-slide *ngFor="let product of keepBuyProducts">
+                <div class="card">
+                    <img [src]="product.image"
+                         alt="">
+                    <p>{{product.name}}</p>
+                </div>
+            </ion-slide>
+
+        </ion-slides>
+        <a href="">
+            {{'general.viewYourBrowsingHistory' | translate}}
+        </a>
+    </div>
+
+    <div class="section ion-padding">
+        <h2>{{'general.giftCardBalance' | translate}}: {{giftCardBalance | currency}}</h2>
+        <div fxLayout="row"
+             fxLayoutGap="5px"
+             class="ion-justify-content-evenly"
+             class="ion-margin-bottom">
+
+            <ion-button expand="block"
+                        fill="outline"
+                        class="ion-text-capitalize text-xs square-button">
+                {{'general.redeemGiftCard' | translate}}
+            </ion-button>
+
+            <ion-button class="ion-text-capitalize text-xs square-button"
+                        expand="block"
+                        fill="outline">
+                {{'general.rechargeBalance' | translate}}
+            </ion-button>
+        </div>
+
+        <a href="">{{'general.manage' | translate}}</a>
+
+    </div>
+
+    <div class="section ion-padding"
+         fxHide>
+        <ion-item lines="none">
+            <ion-label>
+                <h2>
+                    {{'general.toggleDarkMode' | translate}}
+                </h2>
+            </ion-label>
+
+            <ion-buttons slot="end">
+                <ion-icon name="moon-outline"
+                          color="primary"></ion-icon>
+                <ion-toggle (ionChange)="toggleDarkMode()">
+                </ion-toggle>
+            </ion-buttons>
+
+        </ion-item>
+    </div>
+
+</ion-content>

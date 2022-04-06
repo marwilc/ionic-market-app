@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title class="px-16">
+            {{'general.createANewList' | translate}}
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button fill="clear"
+                        (click)="close()">
+                <ion-icon name="close"
+                          color="primary"
+                          slot="icon-only">
+                </ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <form (ngSubmit)="submit()"
+          [formGroup]="createListForm">
+
+        <div class="input mb-16">
+            <ion-label>{{'general.listName' | translate}}</ion-label>
+            <ion-input formControlName="name"
+                       [placeholder]="'general.shoppingList' | translate">
+
+            </ion-input>
+        </div>
+
+        <p>
+            {{'general.useListsToSaveItemsForLater' | translate}}
+        </p>
+
+
+        <ion-button expand="block"
+                    [disabled]="createListForm.invalid || attempt"
+                    class="btn"
+                    type="submit">
+            <ion-spinner name="crescent"
+                         *ngIf="attempt">
+            </ion-spinner>
+            <ng-container *ngIf="!attempt">
+                {{'general.createList' | translate}}
+            </ng-container>
+        </ion-button>
+
+    </form>
+
+
+</ion-content>

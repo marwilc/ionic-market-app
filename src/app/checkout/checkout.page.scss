@@ -1,0 +1,65 @@
+ion-toolbar {
+    --background: var(--ion-color-header);
+}
+h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
+
+p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    padding: 15px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+mat-expansion-panel-header {
+    height: 60px;
+}
+
+.icon-step {
+    font-size: 35px;
+    color: var(--ion-color-primary);
+}
+
+.description-option {
+    flex: 50%;
+
+    h1 {
+        font-weight: bold;
+        color: rgb(88, 88, 88);
+    }
+
+    p {
+        margin-top: 5px;
+    }
+}
+
+.increase-header {
+    height: unset;
+}
+
+.checkout-amount {
+    margin: 16px 0px 16px 0px;
+}

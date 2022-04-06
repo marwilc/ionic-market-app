@@ -1,0 +1,516 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+
+
+<ion-content>
+
+
+    <div>
+        <div>
+
+            <!-- segment list -->
+            <ion-segment (ionChange)="onChangeTypeList($event)"
+                         [value]="selectedTypeList"
+                         mode='md'>
+
+                <ion-segment-button value="yourOrders">
+                    <ion-label>
+                        {{'general.yourOrders' | translate}}
+                    </ion-label>
+                </ion-segment-button>
+
+                <ion-segment-button value="buyAgain">
+                    <ion-label>
+                        {{'general.buyAgain' | translate}}
+                    </ion-label>
+                </ion-segment-button>
+
+            </ion-segment>
+
+        </div>
+
+        <!-- orden vacia -->
+
+        <div fxLayout="row"
+             class="ion-padding-end"
+             fxLayoutGap="10px">
+            <ion-searchbar placeholder="Search all orders"></ion-searchbar>
+            <div fxLayout="row"
+                 fxLayoutGap="5px"
+                 class="ion-align-items-center">
+                <p class="ion-no-margin">Filter</p>
+                <ion-icon name="chevron-forward-outline"
+                          class="text-20"></ion-icon>
+            </div>
+        </div>
+
+        <div>
+            <div class="background"></div>
+
+            <div class="imagen ion-text-center">
+                <img src="assets/images/caja-vacia.png"
+                     alt="">
+            </div>
+        </div>
+
+        <div class="section-lower">
+            <h1>Your Orders</h1>
+
+            <h2>Looks like yuo haven´t placed an order in the last 3 months.</h2>
+            <h2>Use search above to find past orders</h2>
+            <div fxLayout="row"
+                 fxLayoutAlign="center center">
+                <div class="line"></div>
+                <p> or</p>
+                <div class="line"></div>
+            </div>
+            <ion-button class="btn btn-gray-outline"
+                        expand="block">
+                {{'general.continueShopping' | translate}}
+            </ion-button>
+        </div>
+    </div>
+
+
+    <!--  orden llena-->
+
+    <div>
+        <div class="recommendations"
+             fxLayout="row"
+             fxLayoutGap="10px"
+             fxLayoutAlign="center center">
+
+            <div>
+                <h2 [ngClass.xs]="'text-xs'"
+                    [ngClass.gt-xs]="'text-16'"
+                    [ngClass.gt-sm]="'text-18'"
+                    [ngClass.gt-md]="'text-20'">Buy Again</h2>
+                <p [ngClass.xs]="'text-xs'"
+                   [ngClass.gt-xs]="'text-16'"
+                   [ngClass.gt-sm]="'text-18'"
+                   [ngClass.gt-md]="'text-20'">See more</p>
+            </div>
+
+            <div fxLayout="row">
+                <img src="assets/images/producto-1.jpg"
+                     [ngClass.xs]="'img-xs'"
+                     [ngClass.sm]="'img-sm'"
+                     [ngClass.md]="'img-md'"
+                     [ngClass.lg]="'img-lg'"
+                     [ngClass.xl]="'img-xl'"
+                     alt="">
+                <img src="assets/images/producto-2.jpg"
+                     [ngClass.xs]="'img-xs'"
+                     [ngClass.sm]="'img-sm'"
+                     [ngClass.md]="'img-md'"
+                     [ngClass.lg]="'img-lg'"
+                     [ngClass.xl]="'img-xl'"
+                     alt="">
+                <img src="assets/images/producto-3.png"
+                     [ngClass.xs]="'img-xs'"
+                     [ngClass.sm]="'img-sm'"
+                     [ngClass.md]="'img-md'"
+                     [ngClass.lg]="'img-lg'"
+                     [ngClass.xl]="'img-xl'"
+                     alt="">
+            </div>
+        </div>
+
+        <div class="container">
+            <ion-item detail
+                      button
+                      [routerLink]="[1]">
+
+                <img src="assets/images/producto-4.png"
+                     slot="start"
+                     [ngStyle.xs]="{'width': '56px'}"
+                     [ngStyle.sm]="{'width': '150px'}"
+                     [ngStyle.md]="{'width': '170px'}"
+                     [ngStyle.gt-md]="{'width': '200px'}">
+
+                <ion-label>
+                    Delivery Yesterday
+                </ion-label>
+            </ion-item>
+
+
+            <ion-item detail
+                      button
+                      [routerLink]="[1]">
+
+                <img src="assets/images/producto-5.png"
+                     slot="start"
+                     [ngStyle.xs]="{'width': '56px'}"
+                     [ngStyle.sm]="{'width': '150px'}"
+                     [ngStyle.md]="{'width': '170px'}"
+                     [ngStyle.gt-md]="{'width': '200px'}">
+
+                <ion-label>
+                    Delivery Sunday
+                </ion-label>
+            </ion-item>
+
+
+            <ion-item detail
+                      button
+                      [routerLink]="[1]">
+
+                <img src="assets/images/producto-6.png"
+                     slot="start"
+                     [ngStyle.xs]="{'width': '56px'}"
+                     [ngStyle.sm]="{'width': '150px'}"
+                     [ngStyle.md]="{'width': '170px'}"
+                     [ngStyle.gt-md]="{'width': '200px'}">
+
+                <ion-label>
+                    Arriving tomorrow by 9pm
+                </ion-label>
+            </ion-item>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Seccion Volver a comprar -->
+
+    <div class="container">
+
+        <div class="information">
+            <p>There are no recommended items for you buy again at this time. Check Your Orders for items you previously puechased.</p>
+
+            <ion-button class="btn"
+                        expand="block"
+                        [ngStyle.sm]="{ 'width': '100%'}"
+                        [ngStyle.gt-sm]="{ 'width': '50%'}">
+                {{'general.addToCart' | translate}}
+            </ion-button>
+        </div>
+    </div>
+
+
+    <div class="popular-reorders">
+        <h1>Popular reorders</h1>
+
+        <div class="section">
+            <h2>{{'general.popularNearYou' | translate}}</h2>
+            <ion-slides pager="false"
+                        [options]="slideOpts">
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-3.png"
+                             alt="">
+                        <div *ngIf="showSelected">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-4.png"
+                             alt="">
+                        <div *ngIf="showSelected">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product"
+                         fxLayout="column">
+                        <img src="assets/images/articulo-5.png"
+                             alt="">
+                        <div *ngIf="showSelected">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-6.png"
+                             alt="">
+                        <div *ngIf="showSelected">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+            </ion-slides>
+            <div class="show-more ion-align-items-center"
+                 fxLayout="row">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <p (click)="toggleButton()">Show more
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="section">
+            <h2>{{'general.trendingNearYou' | translate}}</h2>
+            <ion-slides pager="false"
+                        [options]="slideOpts">
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-6.png"
+                             alt="">
+                        <div *ngIf="showSelected2">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-7.png"
+                             alt="">
+                        <div *ngIf="showSelected2">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-8.png"
+                             alt="">
+                        <div *ngIf="showSelected2">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-9.png"
+                             alt="">
+                        <div *ngIf="showSelected2">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+            </ion-slides>
+            <div class="show-more ion-align-items-center"
+                 fxLayout="row">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <p (click)="toggleButton2()">Show more
+                </p>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>{{'general.popularNearYou' | translate}}</h2>
+            <ion-slides pager="false"
+                        [options]="slideOpts">
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-3.png"
+                             alt="">
+                        <div *ngIf="showSelected3">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-4.png"
+                             alt="">
+                        <div *ngIf="showSelected3">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-5.png"
+                             alt="">
+                        <div *ngIf="showSelected3">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-6.png"
+                             alt="">
+                        <div *ngIf="showSelected3">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+            </ion-slides>
+            <div class="show-more ion-align-items-center"
+                 fxLayout="row">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <p (click)="toggleButton3()">Show more
+                </p>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>{{'general.trendingNearYou' | translate}}</h2>
+            <ion-slides pager="false"
+                        [options]="slideOpts">
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-6.png"
+                             alt="">
+                        <div *ngIf="showSelected4">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-7.png"
+                             alt="">
+                        <div *ngIf="showSelected4">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-8.png"
+                             alt="">
+                        <div *ngIf="showSelected4">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+                <ion-slide>
+                    <div class="slide-product "
+                         fxLayout="column">
+                        <img src="assets/images/articulo-9.png"
+                             alt="">
+                        <div *ngIf="showSelected4">
+                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <p>$ 30.99</p>
+                            <ion-button class="btn"
+                                        expand="block">
+                                {{'general.addToCart' | translate}}
+                            </ion-button>
+                        </div>
+                    </div>
+
+                </ion-slide>
+            </ion-slides>
+            <div class="show-more ion-align-items-center"
+                 fxLayout="row">
+                <ion-icon name="chevron-down-outline"></ion-icon>
+                <p (click)="toggleButton4()">Show more
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+</ion-content>

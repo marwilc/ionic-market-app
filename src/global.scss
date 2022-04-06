@@ -1,0 +1,267 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import '~@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+/* Global CSS */
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+.ml-5 {
+    margin-left: 5px;
+}
+.mr-16 {
+    margin-right: 16px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
+.mb-0 {
+    margin-bottom: 0px;
+}
+
+.mt-0 {
+    margin-top: 0px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+.mb-16 {
+    margin-bottom: 16px !important;
+}
+.mt-16 {
+    margin-top: 16px !important;
+}
+.mt-5 {
+    margin-top: 5px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.px-16 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+.p-5 {
+    padding: 5px;
+}
+
+.text-ellipsis {
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+}
+
+.text2lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-height: 1.2em; /* fallback */
+    max-height: 3em * 2;
+    margin: 0px;
+}
+
+.text-strike-through {
+    text-decoration: line-through;
+    color: rgb(148, 148, 148);
+}
+
+.text-xs {
+    font-size: 12px !important;
+}
+
+.text-16 {
+    font-size: 16px !important;
+}
+
+.text-18 {
+    font-size: 18px !important;
+}
+.text-20 {
+    font-size: 20px !important;
+}
+
+.content-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar {
+    --background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 0%,
+        rgba(253, 29, 29, 1) 50%,
+        rgba(252, 176, 69, 1) 100%
+    );
+    --progress-background: linear-gradient(
+        90deg,
+        rgba(131, 58, 180, 1) 0%,
+        rgba(253, 29, 29, 1) 50%,
+        rgba(252, 176, 69, 1) 100%
+    );
+}
+
+ion-button.out-line {
+    --border-width: 1px;
+    --border-color: var(--ion-color-amazon-gray-2);
+    color: var(--ion-text-color);
+    letter-spacing: 0;
+}
+
+ion-button.square-button {
+    --border-width: 1px;
+    --border-color: var(--ion-color-amazon-gray-2);
+    color: var(--ion-text-color);
+    letter-spacing: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --background: transparent;
+}
+
+ion-item.item-list {
+    --padding-start: 16px;
+    --inner-padding-end: 16px;
+}
+
+.br-6 {
+    border-radius: 6px;
+}
+
+// used for ion-items list with two lines
+.item-2lines {
+    height: 72px;
+    padding: 8px 0px 8px 0px;
+
+    img {
+        height: 56px;
+        width: 56px;
+        object-fit: cover;
+        margin-right: 16px;
+    }
+}
+
+.btn {
+    font-size: 14px;
+    text-align: center;
+    text-transform: unset;
+    letter-spacing: 0;
+    border-radius: 6px;
+}
+
+.btn-gray-outline {
+    --background: linear-gradient(white, rgb(211, 211, 211));
+    color: black;
+    --box-shadow: inset 0 0 0 1px var(--ion-color-amazon-gray-1);
+    //border: 1px solid var(--ion-color-amazon-gray-1);
+}
+
+.action-sheet-50 {
+    --max-height: 50%;
+}
+
+.action-sheet-50 .modal-wrapper {
+    align-self: flex-end;
+}
+
+.input {
+    ion-input {
+        border: solid 1px var(--ion-color-amazon-gray-1);
+        border-radius: 6px;
+    }
+
+    ion-input.has-focus {
+        border-color: var(--ion-color-primary);
+    }
+
+    ion-textarea {
+        border: solid 1px var(--ion-color-amazon-gray-1);
+        border-radius: 6px;
+    }
+
+    ion-textarea.has-focus {
+        border-color: var(--ion-color-primary);
+    }
+
+    ion-select {
+        --background: transparent;
+        border: 1px solid var(--ion-color-amazon-gray-1);
+        border-radius: 6px;
+    }
+
+    ion-select.has-focus {
+        border-color: var(--ion-color-primary);
+    }
+}
+
+.input-invalid {
+    ion-input {
+        border-color: var(--ion-color-danger) !important;
+    }
+
+    ion-textarea {
+        border-color: var(--ion-color-danger) !important;
+    }
+
+    ion-select {
+        border-color: var(--ion-color-danger) !important;
+    }
+}
+
+.text-strong {
+    font-weight: bold;
+}
+
+.mat-expansion-panel-body {
+    padding: 0 16px 16px !important;
+}

@@ -1,0 +1,11 @@
+<div class="ion-padding location"
+     fxLayout="row"
+     fxLayoutAlign="start center"
+     fxLayoutGap="5px"
+     *ngIf="address">
+    <ion-icon name="location-outline"></ion-icon>
+    <ion-text (click)="showAddressDialog()"
+              class="text-xs"> {{'general.deliverTo' | translate}} {{address.name}} {{address.firstAddress}}</ion-text>
+    <ion-icon name="chevron-down-outline"></ion-icon>
+
+</div>

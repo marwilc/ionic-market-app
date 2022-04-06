@@ -1,0 +1,553 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+<ion-content>
+
+    <div class="icons"
+         fxHide>
+        <div class="container-shared">
+            <ion-icon class="shared"
+                      name="share-social-outline"></ion-icon>
+        </div>
+        <div class="container-heart">
+            <ion-icon class="heart"
+                      name="heart-outline"></ion-icon>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="container">
+
+            <h1>{{product.name}}</h1>
+
+            <ion-slides pager="true"
+                        [options]="slideOpts">
+                <ion-slide>
+                    <img [src]="product.image">
+                </ion-slide>
+            </ion-slides>
+
+
+
+            <h3>{{product.price | currency}}</h3>
+
+            <ion-button fxLayout="row"
+                        class="button-add"
+                        (click)="addToCart()">{{'general.addToCart' | translate}}</ion-button>
+
+            <ion-button fxLayout="row"
+                        class="button-add buy-now"
+                        (click)="buyNow()">{{'general.buyNow' | translate}}</ion-button>
+
+            <a class="add-list"
+               href=""
+               fxHide>ADD TO LIST</a>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="section">
+        <div class="container">
+            <h3>{{'general.description' | translate}}</h3>
+            <p>{{product.description}}</p>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="details">
+                <h3>Features & details</h3>
+                <ul>
+                    <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi facilis rem obcaecati doloremque earum, quia odit minus magnam mollitia nam porro laborum nisi ipsam rerum, expedita, ex esse. Praesentium, nemo.</li>
+                    <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi facilis rem obcaecati doloremque earum, quia odit minus magnam mollitia nam porro laborum nisi ipsam rerum, expedita, ex esse. Praesentium, nemo.</li>
+                    <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi facilis rem obcaecati doloremque earum.</li>
+                    <li> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi facilis rem obcaecati doloremque earum.</li>
+                </ul>
+            </div>
+
+            <div class="product-detalis">
+                <h3> Product Details</h3>
+                <ul>
+                    <li>
+                        <p><span>Product Dimensions: </span>7.75 x 7.5 x 2.75 inches</p>
+                    </li>
+                    <li>
+                        <p><span>Item model number: </span>5444545</p>
+                    </li>
+                    <li>
+                        <p><span>Date First available: </span>September 01,2021</p>
+                    </li>
+                    <li>
+                        <p>
+                            <span>Manufacture: </span>Sony
+                        </p>
+                    </li>
+                    <li>
+                        <p><span>ASIN: </span>2545DFG544GFS</p>
+                    </li>
+                    <li>
+                        <p><span>Average Costumer Review:</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h1>Have a question?</h1>
+            <p>Find answers in product info, Q&As, reviews</p>
+            <ion-searchbar showCancelButton="always"
+                           placeholder="Type your question or keyword"></ion-searchbar>
+
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="container">
+
+            <h1>Customer Question</h1>
+            <ion-searchbar showCancelButton="always"
+                           placeholder="Have a question? Search for answers"> </ion-searchbar>
+
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="container ">
+            <div class="border">
+                <div fxLayout="row"
+                     class="ion-align-items-center"
+                     fxLayoutGap="10px"
+                     fxLayoutAlign="center center">
+                    <div>
+                        <p class="question">Q: does it work on pc and steam</p>
+                        <p class="answer text2lines"> <span>A: </span> Yes it works. Xbox controller layout socks and Iwont´ty use it. I used ps4 controller with ds4 and with steam before upgrading to ps5 controller.</p>
+
+                        <p class="date">Joker | 4 months ago </p>
+                    </div>
+                    <div>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
+                <div fxLayout="row"
+                     class="ion-align-items-center"
+                     fxLayoutGap="10px"
+                     fxLayoutAlign="center center">
+                    <div>
+                        <p class="question">Q: does it work on pc and steam</p>
+                        <p class="answer text2lines"> <span>A: </span> Yes it works. Xbox controller layout socks and Iwont´ty use it. I used ps4 controller with ds4 and with steam before upgrading to ps5 controller.</p>
+
+                        <p class="date">Joker | 4 months ago </p>
+                    </div>
+                    <div>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
+                <div fxLayout="row"
+                     class="ion-align-items-center"
+                     fxLayoutGap="10px"
+                     fxLayoutAlign="center center">
+                    <div>
+                        <p class="question">Q: does it work on pc and steam</p>
+                        <p class="answer text2lines"> <span>A: </span> Yes it works. Xbox controller layout socks and Iwont´ty use it. I used ps4 controller with ds4 and with steam before upgrading to ps5 controller.</p>
+
+                        <p class="date">Joker | 4 months ago </p>
+                    </div>
+                    <div>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
+                <div fxLayout="row"
+                     class="ion-align-items-center"
+                     fxLayoutGap="10px"
+                     fxLayoutAlign="center center">
+                    <div>
+                        <p class="question">Q: does it work on pc and steam</p>
+                        <p class="answer text2lines"> <span>A: </span> Yes it works. Xbox controller layout socks and Iwont´ty use it. I used ps4 controller with ds4 and with steam before upgrading to ps5 controller.</p>
+
+                        <p class="date">Joker | 4 months ago </p>
+                    </div>
+                    <div>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row"
+                 class="ion-justify-content-between see-all">
+                <a href="">See all 207 answered question</a>
+                <div>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="section">
+        <div class="container ">
+            <h1>Customer reviews</h1>
+            <div>
+                <div class="image"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <p>I like Trains</p>
+                </div>
+                <div class="content-reviews">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit </h3>
+                    <p><span>Review in the United States on Octuber30, 2021</span></p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, veniam quod. Qui corporis fugit quam sint ex atque exercitationem aperiam repudiandae, fuga eligendi eveniet ipsa laborum corrupti. Consectetur, dignissimos hic?
+                    </p>
+                    <p> <span>954 people found this helpful</span></p>
+                    <div fxLayout="row"
+                         fxLayoutGap="10px"
+                         class="ion-align-items-center button">
+                        <ion-button>Helpful</ion-button>
+                        <p>Report</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="image"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <p>I like Trains</p>
+                </div>
+                <div class="content-reviews">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit </h3>
+                    <p><span>Review in the United States on Octuber30, 2021</span></p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, veniam quod. Qui corporis fugit quam sint ex atque exercitationem aperiam repudiandae, fuga eligendi eveniet ipsa laborum corrupti. Consectetur, dignissimos hic?
+                    </p>
+                    <p> <span>954 people found this helpful</span></p>
+                    <div fxLayout="row"
+                         fxLayoutGap="10px"
+                         class="ion-align-items-center button">
+                        <ion-button>Helpful</ion-button>
+                        <p>Report</p>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <div class="image"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <p>I like Trains</p>
+                </div>
+                <div class="content-reviews">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit </h3>
+                    <p><span>Review in the United States on Octuber30, 2021</span></p>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, veniam quod. Qui corporis fugit quam sint ex atque exercitationem aperiam repudiandae, fuga eligendi eveniet ipsa laborum corrupti. Consectetur, dignissimos hic?
+                    </p>
+                    <p> <span>954 people found this helpful</span></p>
+                    <div fxLayout="row"
+                         fxLayoutGap="10px"
+                         class="ion-align-items-center button">
+                        <ion-button>Helpful</ion-button>
+                        <p>Report</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="image"
+                     fxLayout="row"
+                     fxLayoutGap="10px">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+
+                    <p>I like Trains</p>
+                </div>
+
+                <div class="content-reviews">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit </h3>
+                    <p><span>Review in the United States on Octuber30, 2021</span></p>
+
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, veniam quod. Qui corporis fugit quam sint ex atque exercitationem aperiam repudiandae, fuga eligendi eveniet ipsa laborum corrupti. Consectetur, dignissimos hic?
+                    </p>
+
+                    <p> <span>954 people found this helpful</span></p>
+                    <div fxLayout="row"
+                         fxLayoutGap="10px"
+                         class="ion-align-items-center button">
+                        <ion-button>Helpful</ion-button>
+
+                        <p>Report</p>
+                    </div>
+                </div>
+
+
+                <div fxLayout="row"
+                     class="ion-justify-content-between see-all">
+                    <a href="">See all 207 answered question</a>
+                    <div>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="section">
+        <div class="container">
+            <h1>Recommendations for items from across our store</h1>
+            <ion-slides pager="false"
+                        [options]="slideOpts2">
+
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-1.jpg"
+                         alt="">
+                    <div class="text-align">
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-2.png"
+                         alt="">
+                    <div class="text-align">
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-3.jpg"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-4.png"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-5.png"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-6.png"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-7.png"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-8.png"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+                <ion-slide fxLayout="column"
+                           class="add-producto">
+                    <img src="assets/images/add-carrito-9.png"
+                         alt="">
+                    <div class="text-align">
+
+                        <h2>Amazon.com Gift Car Balance</h2>
+                        <div></div>
+                        <h3>$ 50.00</h3>
+
+                    </div>
+                </ion-slide>
+            </ion-slides>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1>Deals in magazine subscriptions</h1>
+
+        <ion-slides pager="false"
+                    [options]="slideOpts2">
+
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-1.jpg"
+                     alt="">
+                <div class="text-align">
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-2.jpg"
+                     alt="">
+                <div class="text-align">
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-3.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-4.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-5.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-6.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-7.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-8.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Amazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+                </div>
+            </ion-slide>
+            <ion-slide fxLayout="column"
+                       class="add-producto">
+                <img class="float-left"
+                     src="assets/images/libro-9.jpg"
+                     alt="">
+                <div class="text-align">
+
+                    <h2>Qmazon.com Gift Car Balance</h2>
+                    <div></div>
+                    <h3>$ 50.00</h3>
+
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</ion-content>

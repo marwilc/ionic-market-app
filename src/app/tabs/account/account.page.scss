@@ -1,0 +1,133 @@
+h1 {
+    font-size: 20px;
+    margin: 0;
+
+    span {
+        font-weight: bold;
+    }
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 18px;
+    padding-top: 10px;
+}
+
+a {
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--ion-color-amazon-links-green);
+}
+
+ion-toolbar {
+    --background: var(--ion-color-header);
+
+    ion-icon {
+        color: var(--ion-color-icon-header);
+    }
+}
+
+.section {
+    border-bottom: 5px solid var(--ion-color-amazon-gray-1);
+}
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.bienvenida {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    ion-icon {
+        font-size: 40px;
+        color: var(--ion-color-amazon-links-green);
+    }
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    column-gap: 5px;
+}
+
+.option {
+    text-align: center;
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--ion-color-amazon-gray-2);
+    border-radius: 20px;
+    color: #000;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-top: 10px;
+    padding: 13px 0;
+}
+
+.regresar-principal {
+    margin-top: 20px;
+}
+
+.boton-g {
+    width: 100%;
+}
+
+.lists {
+    justify-content: space-between;
+
+    img {
+        width: 70px;
+        flex: 30%;
+        background-color: var(--ion-color-amazon-gray-3);
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    ion-card-title {
+        font-size: 14px;
+    }
+    ion-card-subtitle {
+        font-size: 12px;
+    }
+}
+
+.card {
+    padding: 5px 0;
+    img {
+        width: 100px;
+        height: 100px;
+        border: 1px solid var(--ion-color-amazon-gray-1);
+        border-radius: 5px;
+        padding: 5px;
+    }
+    p {
+        text-align: left;
+        font-size: 12px;
+        color: black;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.row-segment {
+    display: flex;
+    overflow: auto;
+    color: white;
+
+    ion-button {
+        --background: transparent;
+        color: var(--ion-text-color);
+    }
+}
+
+ion-img {
+    width: 150px;
+}

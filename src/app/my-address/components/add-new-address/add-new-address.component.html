@@ -1,0 +1,144 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="close()">
+                <ion-label color="light">
+                    {{'general.cancel' | translate}}
+                </ion-label>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-label class="text-strong">{{(address ? 'general.editAddress': 'general.addNewAddress') | translate}}</ion-label>
+
+    <form [formGroup]="newAddressForm"
+          (ngSubmit)="onSubmit()"
+          fxLayout="column">
+
+
+        <div class="input mb-16"
+             *ngIf="countries.length > 0">
+            <ion-select formControlName="country"
+                        (ionChange)="onCountryChange($event)">
+                <ion-select-option [value]="country.country_name"
+                                   *ngFor="let country of countries">
+                    {{country.country_name}}
+                </ion-select-option>
+            </ion-select>
+        </div>
+
+
+        <div class="input mb-16"
+             [ngClass]="{'input-invalid': newAddressForm.get('name').invalid && newAddressForm.get('name').touched}">
+            <ion-label>{{'general.nameAndSurname' | translate}}</ion-label>
+            <ion-input [placeholder]="'Juan Perez'"
+                       formControlName="name">
+            </ion-input>
+            <app-ion-error *ngIf="newAddressForm.get('name').errors && newAddressForm.get('name').touched">
+                <span ionError>
+                    {{ newAddressForm.get('name') | formErrorMessage: newAddressForm.get('name').value | translate }}
+                </span>
+            </app-ion-error>
+
+        </div>
+
+
+        <div class="input mb-16"
+             [ngClass]="{'input-invalid': newAddressForm.get('phone').invalid && newAddressForm.get('phone').touched}">
+            <ion-label>{{'general.phone' | translate}}</ion-label>
+            <ion-input formControlName="phone">
+            </ion-input>
+            <app-ion-error *ngIf="newAddressForm.get('phone').errors && newAddressForm.get('phone').touched">
+                <span ionError>
+                    {{ newAddressForm.get('phone') | formErrorMessage: newAddressForm.get('phone').value | translate }}
+                </span>
+            </app-ion-error>
+
+        </div>
+
+        <div class="input mb-16"
+             [ngClass]="{'input-invalid': newAddressForm.get('firstAddress').invalid && newAddressForm.get('firstAddress').touched}">
+            <ion-label>{{'general.address' | translate}}</ion-label>
+            <ion-input formControlName="firstAddress">
+            </ion-input>
+            <app-ion-error *ngIf="newAddressForm.get('firstAddress').errors && newAddressForm.get('firstAddress').touched">
+                <span ionError>
+                    {{ newAddressForm.get('firstAddress') | formErrorMessage: newAddressForm.get('firstAddress').value | translate }}
+                </span>
+            </app-ion-error>
+
+        </div>
+
+        <div class="input mb-16"
+             [ngClass]="{'input-invalid': newAddressForm.get('secondAddress').invalid && newAddressForm.get('secondAddress').touched}">
+            <ion-input formControlName="secondAddress">
+            </ion-input>
+            <app-ion-error *ngIf="newAddressForm.get('secondAddress').errors && newAddressForm.get('secondAddress').touched">
+                <span ionError>
+                    {{ newAddressForm.get('secondAddress') | formErrorMessage: newAddressForm.get('secondAddress').value | translate }}
+                </span>
+            </app-ion-error>
+
+        </div>
+
+        <div class="input mb-16"
+             [ngClass]="{'input-invalid': newAddressForm.get('city').invalid && newAddressForm.get('city').touched}">
+            <ion-label>{{'general.city' | translate}}</ion-label>
+            <ion-input formControlName="city">
+            </ion-input>
+            <app-ion-error *ngIf="newAddressForm.get('city').errors && newAddressForm.get('city').touched">
+                <span ionError>
+                    {{ newAddressForm.get('city') | formErrorMessage: newAddressForm.get('city').value | translate }}
+                </span>
+            </app-ion-error>
+
+        </div>
+
+        <div fxLayout="row">
+            <div class="input mb-16 mr-16"
+                 fxFlex="50"
+                 *ngIf="states.length > 0">
+                <ion-label>{{'general.state' | translate}}</ion-label>
+                <ion-select formControlName="state">
+                    <ion-select-option [value]="state.state_name"
+                                       *ngFor="let state of states">
+                        {{state.state_name}}
+                    </ion-select-option>
+                </ion-select>
+            </div>
+
+            <div class="input mb-16"
+                 fxFlex="50"
+                 [ngClass]="{'input-invalid': newAddressForm.get('zipCode').invalid && newAddressForm.get('zipCode').touched}">
+                <ion-label>{{'general.zipCode' | translate}}</ion-label>
+                <ion-input formControlName="zipCode">
+                </ion-input>
+                <app-ion-error *ngIf="newAddressForm.get('zipCode').errors && newAddressForm.get('zipCode').touched">
+                    <span ionError>
+                        {{ newAddressForm.get('zipCode') | formErrorMessage: newAddressForm.get('zipCode').value | translate }}
+                    </span>
+                </app-ion-error>
+
+            </div>
+        </div>
+
+
+        <ion-item lines="none">
+            <ion-checkbox slot="start"
+                          formControlName="preferredAddress"></ion-checkbox>
+            <ion-label>
+                {{ 'general.markAsPreferredAddress'| translate}}
+            </ion-label>
+        </ion-item>
+
+
+        <ion-button type="submit"
+                    [disabled]="newAddressForm.invalid"> {{(address ? 'general.editAddress': 'general.addNewAddress') | translate}}</ion-button>
+    </form>
+
+
+</ion-content>

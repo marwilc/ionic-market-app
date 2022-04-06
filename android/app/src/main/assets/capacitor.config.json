@@ -1,0 +1,6 @@
+{
+	"appId": "com.dev.soloaunclick",
+	"appName": "Soloaunclick",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

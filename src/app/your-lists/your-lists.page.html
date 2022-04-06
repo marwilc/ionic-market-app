@@ -1,0 +1,110 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+
+<ion-content class="ion-padding">
+
+    <!-- your List -->
+    <ion-item lines="none">
+        <ion-label>
+            <h1>
+                {{'general.listAndRegistry' | translate}}
+            </h1>
+        </ion-label>
+
+        <ion-note color="primary"
+                  slot="end"
+                  class="text-16"
+                  (click)="createAList()">
+            {{'general.createAList' | translate}}
+        </ion-note>
+    </ion-item>
+
+
+    <!-- segment list -->
+    <ion-segment (ionChange)="onChangeTypeList($event)"
+                 [value]="selectedTypeList"
+                 mode='md'>
+
+        <ion-segment-button value="yourList">
+            <ion-label>
+                {{'general.yourList' | translate}}
+            </ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="friendsList">
+            <ion-label>
+                {{'general.yourFriendsList' | translate}}
+            </ion-label>
+        </ion-segment-button>
+
+    </ion-segment>
+
+
+    <ng-container [ngSwitch]="selectedTypeList">
+
+        <!-- your lists -->
+        <ng-container *ngSwitchCase="'yourList'">
+            <ion-list>
+                <ion-item lines="none"
+                          [routerLink]="[list.id]"
+                          class="item-2lines"
+                          *ngFor="let list of yourLists">
+                    <img [src]="list.productCover?.image | image"
+                         appImageFallback
+                         slot="start">
+
+                    <ion-label>
+                        <h2>{{list.name | titlecase}}</h2>
+                        <p>{{list.type | titlecase}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ng-container>
+
+
+        <!-- your friends list -->
+        <ng-container *ngSwitchDefault>
+            <div class="container list-friend">
+                <div class="ion-text-center">
+                    <h2>
+                        {{'general.youDontHaveAnyShared' | translate}}
+                    </h2>
+                    <p>
+                        {{'general.askAFriendToShareTheirSoloAunClickListWithYou' | translate}}
+                    </p>
+                </div>
+
+                <div class="message">
+                    <h2>{{'general.message' | translate}}</h2>
+                    <div class="content-message">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, tempore iure, dolorum debitis error modi eius quam a delectus quis vitae corrupti.
+                        </p>
+                        <br>
+
+                        <p>{{'general.thanks' | translate}}</p>
+                        <p>{{user.firstName | uppercase}}</p>
+
+                        <div class="line"></div>
+
+                        <p>
+                            {{'general.toViewAndShareYourListsVisit' | translate}}
+                            <a href="/tabs/account/your-lists">
+                                {{'general.yourSoloAUnClickListsPage' | translate}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <ion-button class="btn btn-gray-outline mt-16"
+                            expand="block">
+                    {{'general.copyMessage' | translate}}
+                </ion-button>
+                <ion-button expand="block"
+                            class="btn">
+                    {{'general.email' | translate}}
+                </ion-button>
+            </div>
+        </ng-container>
+    </ng-container>
+
+</ion-content>

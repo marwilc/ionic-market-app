@@ -1,0 +1,38 @@
+<div class="contenedor-principal ">
+    <div class="carro-vacio section">
+        <img src="assets/images/carrito.png"
+             alt="">
+        <div class="texto-carro">
+            <p>{{'general.yourSoloAUnClickCartIsEmpty' | translate}}</p>
+            <a>{{'general.seeRecommendations' | translate}}</a>
+        </div>
+    </div>
+
+
+
+    <div class="border-top section">
+        <h1>{{'general.popularNearYou' | translate}}</h1>
+
+        <app-product-carousel [products]="popularNearYouProducts">
+        </app-product-carousel>
+
+    </div>
+
+    <div class="section">
+        <h1>{{'general.trendingNearYou' | translate}}</h1>
+
+        <app-product-carousel [products]="trendingNearYouProducts">
+        </app-product-carousel>
+
+    </div>
+
+
+    <div class="section">
+        <h1>{{'general.popularNearYou' | translate}}</h1>
+
+        <app-product-carousel [products]="popularNearYouProducts">
+        </app-product-carousel>
+
+    </div>
+
+</div>

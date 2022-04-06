@@ -1,0 +1,444 @@
+<ion-list class="watch-total">
+    <ion-radio-group [value]="selectedPaymentMethod"
+                     (ionChange)="onChangePaymentMethod($event)">
+
+        <div *ngFor="let method  of paymentsMethods">
+            <ion-item lines="none"
+                      class="radio"
+                      [ngClass]="{'selected-radio': selectedPaymentMethod.type === method.type}">
+                <ion-radio slot="start"
+                           class="mr-16"
+                           [value]="method">
+                </ion-radio>
+                <div fxLayout="row"
+                     fxLayoutGap="15px"
+                     class="ion-align-items-center">
+
+                    <div class="description-option">
+                        <h1>{{method.name | translate}}</h1>
+                        <p>{{method.description | translate}}</p>
+                    </div>
+                </div>
+
+            </ion-item>
+        </div>
+    </ion-radio-group>
+</ion-list>
+
+
+
+
+<div fxLayout="row wrap">
+    <ng-container *ngTemplateOutlet="amount"></ng-container>
+</div>
+
+<div fxLayout="row wrap"
+     *ngIf="buttonCheckoutIntersect"
+     [ngClass]="{'fixed': buttonCheckoutIntersect}">
+
+    <ng-container *ngTemplateOutlet="amount"></ng-container>
+
+</div>
+
+
+<div class="mt-16"
+     *ngIf="selectedPaymentMethod.type === payTypes.MULTI_PAYMENT">
+    <p>
+        <ion-text color="secondary">
+            {{'general.multiCurrencyDescription' | translate}}
+        </ion-text>
+    </p>
+
+    <p class="mt-16"
+       *ngIf="multiPayments.length < MAX_PAYMENTS">
+        <ion-text color="primary">
+            {{ (multiPayments.length === 0 ? 'general.enterFirstPayment' : 'general.enterSecondPayment') | translate}}
+        </ion-text>
+    </p>
+</div>
+
+<div class="mt-16"
+     *ngIf="selectedPaymentMethod.type === payTypes.MULTI_PAYMENT">
+
+    <ion-item *ngFor="let payment of multiPayments; index as i">
+
+        <ion-label>
+            {{payment.type}} {{payment.paymentData.amount ? (payment.paymentData.amount | currency) : payment.paymentData.accountHolder}}
+        </ion-label>
+
+        <ion-buttons slot="end">
+            <ion-button color="danger"
+                        (click)="removeMultiPayment(i)"
+                        class="btn"
+                        fxLayout="row"
+                        fxLayoutAlign="center center">
+                <ion-icon name="trash"></ion-icon>
+                {{'general.remove' | translate}}
+            </ion-button>
+
+        </ion-buttons>
+    </ion-item>
+
+</div>
+
+<div class="mt-16"
+     *ngIf="selectedPaymentMethod.type === payTypes.SINGLE_PAYMENT ">
+
+    <ion-item *ngIf="singlePayment">
+
+        <ion-label>
+            {{singlePayment.type}} {{singlePayment.paymentData.amount ? (singlePayment.paymentData.amount | currency) : singlePayment.paymentData.accountHolder}}
+        </ion-label>
+
+        <ion-buttons slot="end">
+            <ion-button color="danger"
+                        (click)="removeSinglePayment()"
+                        class="btn"
+                        fxLayout="row"
+                        fxLayoutAlign="center center">
+                <ion-icon name="trash"></ion-icon>
+                {{'general.remove' | translate}}
+            </ion-button>
+
+        </ion-buttons>
+    </ion-item>
+
+</div>
+
+
+
+<div class="mt-16"
+     *ngIf="(multiPayments.length < MAX_PAYMENTS && selectedPaymentMethod.type === payTypes.MULTI_PAYMENT )|| (!singlePayment && selectedPaymentMethod.type === payTypes.SINGLE_PAYMENT)">
+
+    <ion-item *ngFor="let type of accountTypes"
+              class="account-type"
+              [ngClass]="{'selected-radio': selectedAccountType === type}"
+              (click)="onChangeAccountType(type)"
+              button>
+        <ion-img [src]="type.image"
+                 slot="start"
+                 class="avatar">
+        </ion-img>
+        <ion-label>{{type.name}}</ion-label>
+    </ion-item>
+
+
+    <ng-container *ngIf="selectedAccountType"
+                  [ngSwitch]="selectedAccountType?.type">
+
+        <ng-container *ngIf="(accountPayments | filter:'type':selectedAccountType?.type).length > 1">
+            <div fxLayout="row wrap"
+                 class="mt-16">
+                <div fxFlex="0 1 calc(50% - 5px)"
+                     class="mr-5 payment mb-5"
+                     [ngClass]="{'selected-payment': selectedPayment === payment}"
+                     (click)="selectPayment(payment)"
+                     *ngFor="let payment of accountPayments | filter:'type':selectedAccountType?.type">
+                    <img [src]="payment.image"
+                         *ngIf="payment.type !== accountEnums.CASH">
+                    <ion-label *ngIf="payment.type === accountEnums.CASH">{{payment.name}}</ion-label>
+                </div>
+            </div>
+        </ng-container>
+
+
+
+        <ng-container *ngSwitchCase="accountEnums.ZELLE">
+
+            <div class="mb-16 mt-16">
+                <p class="mb-16">{{selectedPayment.description}}</p>
+                <p>
+                    <span class="text-strong">{{'general.email' | translate}}:</span> {{selectedPayment.mail}}
+                </p>
+                <p> <span class="text-strong">{{'general.name' | translate}}:</span> {{selectedPayment.name}}</p>
+                <p class="mt-16">{{'general.anyQuestionsContact' | translate}}</p>
+            </div>
+
+            <form [formGroup]="forms[accountEnums.ZELLE]">
+                <div class="input mb-16"
+                     [ngClass]="{'input-invalid': forms[accountEnums.ZELLE].get('accountHolder').invalid && forms[accountEnums.ZELLE].get('accountHolder').touched}">
+
+                    <ion-label>
+                        {{'general.accountHolder' | translate}}
+                    </ion-label>
+                    <ion-input formControlName="accountHolder">
+
+                    </ion-input>
+                    <app-ion-error *ngIf="forms[accountEnums.ZELLE].get('accountHolder').errors && forms[accountEnums.ZELLE].get('accountHolder').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.ZELLE].get('accountHolder') | formErrorMessage: forms[accountEnums.ZELLE].get('accountHolder').value | translate }}
+                        </span>
+                    </app-ion-error>
+                </div>
+
+                <div class="input"
+                     [ngClass]="{'input-invalid': forms[accountEnums.ZELLE].get('amount').invalid && forms[accountEnums.ZELLE].get('amount').touched}">
+
+                    <ion-label>
+                        {{'general.amount' | translate}} $</ion-label>
+                    <ion-input type="number"
+                               formControlName="amount">
+
+                    </ion-input>
+
+                    <app-ion-error *ngIf="forms[accountEnums.ZELLE].get('amount').errors && forms[accountEnums.ZELLE].get('amount').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.ZELLE].get('amount') | formErrorMessage: forms[accountEnums.ZELLE].get('amount').value | translate }}
+                        </span>
+                    </app-ion-error>
+                </div>
+            </form>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="accountEnums.PAYPAL">
+
+
+            <div class="mb-16 mt-16">
+                <p class="mb-16">
+                    {{selectedPayment.description}}
+                </p>
+                <p>
+                    <a [href]="selectedPayment.mail">
+                        {{selectedPayment.mail}}
+                    </a>
+                </p>
+            </div>
+
+
+            <form [formGroup]="forms[accountEnums.PAYPAL]">
+                <div class="input"
+                     [ngClass]="{'input-invalid': forms[accountEnums.PAYPAL].get('accountHolder').invalid && forms[accountEnums.PAYPAL].get('accountHolder').touched}">
+
+                    <ion-label>
+                        {{'general.accountHolder' | translate}}
+                    </ion-label>
+                    <ion-input formControlName="accountHolder">
+
+                    </ion-input>
+                    <app-ion-error *ngIf="forms[accountEnums.PAYPAL].get('accountHolder').errors && forms[accountEnums.PAYPAL].get('accountHolder').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.PAYPAL].get('accountHolder') | formErrorMessage: forms[accountEnums.PAYPAL].get('accountHolder').value | translate }}
+                        </span>
+                    </app-ion-error>
+                </div>
+            </form>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="accountEnums.CASH">
+
+
+            <form class="mb-16 mt-16"
+                  [formGroup]="forms[accountEnums.CASH]">
+                <div class="input mb-16"
+                     [ngClass]="{'input-invalid': forms[accountEnums.CASH].get('amount').invalid && forms[accountEnums.CASH].get('amount').touched}">
+
+                    <ion-label>
+                        {{'general.amount' | translate}}
+                    </ion-label>
+                    <ion-input type="number"
+                               formControlName="amount">
+
+                    </ion-input>
+                    <app-ion-error *ngIf="forms[accountEnums.CASH].get('amount').errors && forms[accountEnums.CASH].get('amount').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.CASH].get('amount') | formErrorMessage: forms[accountEnums.CASH].get('amount').value | translate }}
+                        </span>
+                    </app-ion-error>
+                </div>
+
+
+                <div class="input mb-16"
+                     [ngClass]="{'input-invalid': forms[accountEnums.CASH].get('note').invalid && forms[accountEnums.CASH].get('note').touched}">
+                    <ion-label>
+                        {{'general.note' | translate}}
+                    </ion-label>
+                    <ion-textarea formControlName="note">
+                    </ion-textarea>
+                    <app-ion-error *ngIf="forms[accountEnums.CASH].get('note').errors && forms[accountEnums.CASH].get('note').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.CASH].get('note') | formErrorMessage: forms[accountEnums.CASH].get('note').value | translate }}
+                        </span>
+                    </app-ion-error>
+
+                </div>
+
+                <ion-item button
+                          color="primary"
+                          class="attach-files"
+                          lines="none"
+                          [disabled]="images.length === 2"
+                          (click)="img.click()">
+                    <ion-icon name="image-outline"
+                              slot="start">
+                    </ion-icon>
+
+                    <ion-label>
+                        {{'general.attachPhotosOfTheTicket' | translate}}
+                    </ion-label>
+                </ion-item>
+
+                <input #img
+                       hidden
+                       [multiple]="true"
+                       type="file"
+                       accept="image/*"
+                       (change)="onChangeImage($event)" />
+
+
+                <ion-slides pager="false"
+                            class="mt-16"
+                            [options]="slideOpts">
+                    <ion-slide *ngFor="let image of images; index as i"
+                               class="slide"
+                               fxLayout="column"
+                               fxLayoutAlign="space-between center">
+                        <ion-img [src]="image.url"
+                                 class="img">
+
+                        </ion-img>
+
+                        <ion-button fill="clear"
+                                    (click)="deleteImage(i)">
+                            <ion-icon slot="icon-only"
+                                      name="trash-outline">
+
+                            </ion-icon>
+                        </ion-button>
+
+                    </ion-slide>
+                </ion-slides>
+
+
+                <p class="mt-16">
+                    {{'general.roundingWillBeAppliedOnPurchasesWithDecimals' | translate}}
+                </p>
+
+                <p fxHide>
+                    {{'general.enterTheAmountOfTheTicket' | translate}}
+                </p>
+
+                <ion-item fxHide>
+                    <ion-checkbox slot="start"
+                                  formControlName="wantCredit"></ion-checkbox>
+                    <ion-label>
+                        {{'general.selectIfYouWantToCredit' | translate}}
+                    </ion-label>
+                </ion-item>
+
+            </form>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="accountEnums.TRANSFER_BANK">
+
+            <form class="mb-16 mt-16"
+                  [formGroup]="forms[accountEnums.TRANSFER_BANK]">
+                <div class="input mb-16"
+                     [ngClass]="{'input-invalid': forms[accountEnums.TRANSFER_BANK].get('referenceInformation').invalid && forms[accountEnums.TRANSFER_BANK].get('referenceInformation').touched}">
+
+                    <ion-label>
+                        {{'general.referenceInformation' | translate}}
+                    </ion-label>
+                    <ion-input formControlName="referenceInformation">
+
+                    </ion-input>
+
+                    <app-ion-error *ngIf="forms[accountEnums.TRANSFER_BANK].get('referenceInformation').errors && forms[accountEnums.TRANSFER_BANK].get('referenceInformation').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.TRANSFER_BANK].get('referenceInformation') | formErrorMessage: forms[accountEnums.TRANSFER_BANK].get('referenceInformation').value | translate }}
+                        </span>
+                    </app-ion-error>
+                </div>
+
+
+                <div class="input mb-16"
+                     [ngClass]="{'input-invalid': forms[accountEnums.TRANSFER_BANK].get('amount').invalid && forms[accountEnums.TRANSFER_BANK].get('amount').touched}">
+                    <ion-label>{{'general.amount' | translate}}</ion-label>
+                    <ion-input type="number"
+                               formControlName="amount">
+                    </ion-input>
+                    <app-ion-error *ngIf="forms[accountEnums.TRANSFER_BANK].get('amount').errors && forms[accountEnums.TRANSFER_BANK].get('amount').touched">
+                        <span ionError>
+                            {{ forms[accountEnums.TRANSFER_BANK].get('amount') | formErrorMessage: forms[accountEnums.TRANSFER_BANK].get('amount').value | translate }}
+                        </span>
+                    </app-ion-error>
+
+                </div>
+
+
+                <ion-item>
+                    <ion-checkbox slot="start"
+                                  formControlName="fromAnotherBank"></ion-checkbox>
+                    <ion-label>
+                        {{'general.selectIfYouTransferredFromAnotherBank' | translate}}
+                    </ion-label>
+                </ion-item>
+
+                <p class="mt-16">
+                    {{'general.paymentsIssuedFromABank' | translate}}
+                </p>
+            </form>
+
+        </ng-container>
+
+    </ng-container>
+
+
+
+    <ion-button *ngIf="selectedPayment"
+                (click)="registerPayment()"
+                class="btn ion-float-right mt-16">
+        {{'general.registerPayment' | translate}}
+    </ion-button>
+
+</div>
+
+<ng-template #amount>
+
+    <div fxLayout="column"
+         fxFlex="1 1 calc(50% - 5px)"
+         fxLayoutAlign="center center"
+         class="mt-16 total-amount p-5 text-xs ion-text-center ">
+        <ion-label>
+            <h2>
+                {{'general.totalToPay' | translate}}
+            </h2>
+        </ion-label>
+        <ion-label color="medium">
+            {{total * bolivarXDollar | currency : 'VES': vesCurrency }} / {{total | currency}}
+        </ion-label>
+    </div>
+
+    <div fxLayout="column"
+         *ngIf="selectedPaymentMethod.type === payTypes.MULTI_PAYMENT"
+         fxFlex="1 1 calc(50% - 5px)"
+         fxLayoutAlign="center center"
+         class="mt-16 total-amount p-5 text-xs ion-text-center">
+        <ion-label>
+            <h2>
+                {{'general.paidOut' | translate}}
+            </h2>
+        </ion-label>
+        <ion-label color="medium">
+            {{paidOut * bolivarXDollar | currency : 'VES': vesCurrency}} / {{paidOut | currency}}
+        </ion-label>
+    </div>
+
+    <div fxLayout="column"
+         *ngIf="selectedPaymentMethod.type === payTypes.MULTI_PAYMENT"
+         fxFlex="1 1 calc(50% - 5px)"
+         fxLayoutAlign="center center"
+         class=" total-amount p-5 text-xs ion-text-center">
+        <ion-label>
+            <h2>
+                {{'general.pending' | translate}}
+            </h2>
+        </ion-label>
+        <ion-label color="danger">
+            {{(((total - paidOut) < 0 ? 0 : total - paidOut) * bolivarXDollar) | currency : 'VES': vesCurrency }} / {{(total - paidOut) | currency}}
+        </ion-label>
+    </div>
+
+</ng-template>

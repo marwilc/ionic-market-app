@@ -1,0 +1,15 @@
+.row-segment {
+    display: flex;
+    overflow: auto;
+    background: var(--ion-color-header);
+    color: white;
+
+    ion-button {
+        --background: transparent;
+        color: var(--ion-text-color-header);
+    }
+}
+
+ion-text {
+    color: var(--ion-text-color-header);
+}

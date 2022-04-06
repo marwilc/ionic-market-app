@@ -1,0 +1,8 @@
+<div class="row-segment">
+    <ion-button *ngFor="let segment of segments"
+                fill="clear"
+                class="ion-text-capitalize text-xs"
+                [routerLink]="[segment.router]">
+        {{segment.name | translate}}
+    </ion-button>
+</div>

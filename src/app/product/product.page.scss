@@ -1,0 +1,218 @@
+h1 {
+    font-size: 23px;
+    margin: 10px 0 0 0;
+}
+h2 {
+    font-size: 35px;
+
+    sup {
+        font-size: 13px;
+        top: -0.9em;
+    }
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.container {
+    padding: 15px;
+}
+
+.section {
+    border-bottom: 5px solid var(--ion-color-amazon-gray-1);
+    width: 100%;
+}
+
+ion-slide {
+    padding-top: 10px;
+    img {
+        width: 100%;
+        height: 350px;
+    }
+}
+
+.container-heart {
+    position: absolute;
+    height: 400px;
+    width: 25px;
+    left: 0;
+    z-index: 10;
+    padding-left: 20px;
+    padding-top: 100px;
+}
+.container-shared {
+    position: absolute;
+    height: 400px;
+    width: 25px;
+    z-index: 10;
+    right: 0;
+    padding-right: 50px;
+}
+
+.shared {
+    padding-top: 60px;
+    position: absolute;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    color: var(--ion-color-amazon-gray-2);
+    z-index: 11;
+}
+
+.heart {
+    margin-top: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 25px;
+    height: 25px;
+    color: var(--ion-color-amazon-gray-2);
+}
+
+.buy-now {
+    --background: var(--ion-color-amazon-button-yellow);
+}
+
+.add-list {
+    text-decoration: none;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.button-add {
+    width: 70%;
+    margin: 10px auto;
+    text-transform: unset;
+    font-size: 16px;
+    color: black;
+}
+
+.details {
+    ul {
+        padding-left: 25px;
+    }
+    li {
+        font-size: 13px;
+    }
+}
+.product-detalis {
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    ul li {
+        list-style: none;
+    }
+
+    p span {
+        font-weight: bold;
+    }
+}
+
+.border {
+    border: 1px solid var(--ion-color-amazon-gray-1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.question {
+    font-weight: bold;
+}
+
+.answer {
+    width: 100%;
+
+    span {
+        font-weight: bold;
+    }
+}
+
+.date {
+    margin: 5px 0 10px 0;
+    color: var(--ion-color-medium);
+}
+.see-all {
+    margin-top: 10px;
+
+    a {
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+.image {
+    align-items: center;
+    margin-top: 15px;
+
+    ion-icon {
+        font-size: 30px;
+        color: var(--ion-color-header);
+    }
+    p {
+        font-size: 14px;
+    }
+}
+
+.content-reviews {
+    h3 {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 18px;
+        margin-bottom: 5px;
+    }
+
+    p span {
+        color: var(--ion-color-amazon-gray-2);
+        font-size: 10px;
+    }
+}
+
+.button {
+    ion-button {
+        --background: transparent;
+        border: 1px solid var(--ion-color-amazon-gray-1);
+        color: black;
+        text-transform: unset;
+        border-radius: 5px;
+    }
+}
+
+.text-align {
+    text-align: left;
+}
+.add-producto {
+    img {
+        width: 120px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    h2 {
+        font-size: 14px;
+        color: var(--ion-color-amazon-links-green);
+        margin-top: 5px;
+    }
+
+    h3 {
+        font-size: 14px;
+        color: var(--ion-color-amazon-red);
+        font-weight: bold;
+        margin-top: 5px;
+    }
+}

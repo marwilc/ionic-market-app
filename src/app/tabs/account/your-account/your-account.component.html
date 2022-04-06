@@ -1,0 +1,17 @@
+<app-search-header [showBackButton]="true"></app-search-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header lines="inset">
+            <ion-label class="text-strong">{{ 'general.setupAccount'| translate}}</ion-label>
+        </ion-list-header>
+
+        <ion-item class="item-list"
+                  detail
+                  button
+                  *ngFor="let item of setupItems">
+            <ion-label [routerLink]="item.router">{{item.label | translate}}</ion-label>
+        </ion-item>
+
+    </ion-list>
+</ion-content>

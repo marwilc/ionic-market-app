@@ -1,0 +1,62 @@
+h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
+
+p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ion-checkbox {
+    width: 24px;
+    height: 24px;
+}
+
+ion-list {
+    border-bottom: 1px solid var(--ion-color-amazon-gray-1);
+}
+
+.description-option {
+    flex: 50%;
+
+    h1 {
+        font-weight: bold;
+        color: rgb(88, 88, 88);
+    }
+
+    p {
+        margin-top: 5px;
+    }
+}
+
+ion-item.radio {
+    --background: rgb(235, 235, 235);
+    --border-radius: 15px;
+    margin-top: 10px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    --padding-start: 10px;
+    overflow: unset;
+}
+
+.item.sc-ion-label-md-h,
+.item .sc-ion-label-md-h {
+    white-space: unset;
+}
+
+ion-item.selected-radio {
+    --background: #defad9;
+}

@@ -1,0 +1,259 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="light"
+                             [ngClass]="{'flex': true}">
+            </ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="container">
+
+        <h1 class="title">{{'general.paymentProcess' | translate}}</h1>
+
+
+        <mat-accordion>
+
+            <!-- step 1 -->
+
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header [ngClass]="{'increase-header mt-16 mb-16': shippingAddress ? true: false}">
+                    <mat-panel-title fxLayout="row"
+                                     fxLayoutGap="16px"
+                                     fxLayoutAlign="start center">
+                        <ion-icon class="icon-step"
+                                  fxFlex="35px"
+                                  [color]="shippingAddress ? 'primary': 'medium'"
+                                  name="location-outline">
+                        </ion-icon>
+                        <ion-label class="text-16"
+                                   color="medium"
+                                   *ngIf="!shippingAddress">
+                            {{'general.stepOneSelectShippingAddress' | translate}}
+                        </ion-label>
+
+                        <div class="description-option"
+                             *ngIf="shippingAddress">
+                            <h1>{{shippingAddress.name}}</h1>
+                            <h2>{{shippingAddress.phone}}</h2>
+                            <p>{{shippingAddress.firstAddress}}</p>
+                        </div>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <!--  select shipping address  -->
+                <app-step-one (onComplete)="onCompleteStepOne($event)">
+
+                </app-step-one>
+
+
+            </mat-expansion-panel>
+
+            <!-- step 2 -->
+            <mat-expansion-panel #panelStepTwo>
+                <mat-expansion-panel-header [ngClass]="{'increase-header mt-16 mb-16': shippingTime ? true: false}">
+                    <mat-panel-title fxLayout="row"
+                                     fxLayoutGap="16px"
+                                     fxLayoutAlign="start center">
+                        <ion-icon class="icon-step"
+                                  fxFlex="35px"
+                                  [color]="shippingTime ? 'primary': 'medium'"
+                                  name="car-outline">
+                        </ion-icon>
+
+                        <ion-label class="text-16"
+                                   color="medium"
+                                   *ngIf="!shippingTime">
+                            {{'general.stepTwoSelectAShippingType' | translate}}
+                        </ion-label>
+
+                        <div class="description-option"
+                             *ngIf="shippingTime">
+                            <h1>
+                                {{'general.prepareYourShipment' | translate}}
+                            </h1>
+                            <p>{{shippingTime.date | date:	'EEEE, d MMMM' | titlecase}}</p>
+                            <p>{{shippingTime.time}}</p>
+                        </div>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <app-step-two (onComplete)="onCompleteStepTwo($event)">
+
+                </app-step-two>
+
+            </mat-expansion-panel>
+
+            <!-- step 3 -->
+            <mat-expansion-panel #panelStepThree>
+                <mat-expansion-panel-header [ngClass]="{'increase-header mt-16 mb-16': billing ? true: false}">
+                    <mat-panel-title fxLayout="row"
+                                     fxLayoutGap="16px"
+                                     fxLayoutAlign="start center">
+                        <ion-icon class="icon-step"
+                                  fxFlex="35px"
+                                  [color]="billing ? 'primary': 'medium'"
+                                  name="document-text-outline">
+                        </ion-icon>
+
+                        <ion-label *ngIf="!billing"
+                                   color="medium">
+                            {{'general.step3Billing' | translate}}
+                        </ion-label>
+
+                        <div class="description-option"
+                             *ngIf="billing">
+                            <h1>{{billing.name}}</h1>
+                            <h2>{{billing.phone}}</h2>
+                            <p>{{billing.firstAddress}}</p>
+                        </div>
+
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <app-step-three (onComplete)="onCompleteStepThree($event)">
+
+                </app-step-three>
+
+            </mat-expansion-panel>
+
+
+            <!-- step 4 -->
+
+            <mat-expansion-panel #panelStepFour>
+                <mat-expansion-panel-header [ngClass]="{'increase-header mt-16 mb-16': payment ? true: false}">
+                    <mat-panel-title fxLayout="row"
+                                     fxLayoutGap="16px"
+                                     fxLayoutAlign="start center">
+
+                        <ion-icon class="icon-step"
+                                  fxFlex="35px"
+                                  [color]="payment ? 'primary': 'medium'"
+                                  name="cash-outline">
+                        </ion-icon>
+
+                        <ion-label *ngIf="!payment"
+                                   color="medium">
+                            {{'general.step4RegisterYourPayment' | translate}}
+                        </ion-label>
+
+                        <div class="description-option"
+                             *ngIf="payment">
+                            <h1>{{'general.recordedPayments' | translate}}</h1>
+                            <p>{{'general.clickCheckout' | translate}}</p>
+                        </div>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+                <app-step-four (onComplete)="onCompleteStepFour($event)"
+                               [total]="total">
+
+                </app-step-four>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <ion-card class="mt-16 checkout-amount">
+
+            <ion-button class="ion-margin btn"
+                        (click)="finishPurchase()"
+                        expand="block">
+                {{'general.finishPurchase' | translate}}
+            </ion-button>
+
+            <ion-item class="px-16"
+                      lines="none">
+                <ion-label>{{'general.subtotal' | translate}}</ion-label>
+                <ion-text slot="end">
+                    <p class="ion-text-end">
+                        {{subTotal | currency}}
+                    </p>
+                    <p class="ion-text-end">
+                        {{(subTotal * bolivarXDollar) | currency : 'VES': vesCurrency}}
+                    </p>
+                </ion-text>
+            </ion-item>
+
+            <ion-item class="px-16"
+                      lines="none">
+
+                <ion-label>{{'general.IVA' | translate}}</ion-label>
+                <ion-text slot="end">
+                    <p class="ion-text-end">
+                        {{iva | currency}}
+                    </p>
+                    <p class="ion-text-end">
+                        {{(iva * bolivarXDollar) | currency : 'VES': vesCurrency}}
+                    </p>
+                </ion-text>
+
+            </ion-item>
+            <ion-item class="px-16"
+                      lines="none">
+                <ion-label>{{'general.tip' | translate}}</ion-label>
+                <ion-text slot="end">
+                    <p class="ion-text-end">
+                        {{tip | currency}}
+                    </p>
+                    <p class="ion-text-end">
+                        {{(tip * bolivarXDollar) | currency : 'VES': vesCurrency}}
+                    </p>
+                </ion-text>
+
+            </ion-item>
+
+            <ion-item class="px-16">
+
+                <ion-label>{{'general.shipping' | translate}}</ion-label>
+                <ion-text slot="end">
+                    <p class="ion-text-end">
+                        {{shipping | currency}}
+                    </p>
+                    <p class="ion-text-end">
+                        {{(shipping * bolivarXDollar) | currency : 'VES': vesCurrency}}
+                    </p>
+                </ion-text>
+
+            </ion-item>
+
+            <ion-item class="px-16"
+                      lines="none">
+
+                <ion-label>{{'general.rate' | translate}}</ion-label>
+                <ion-text slot="end">
+                    <p class="ion-text-end">
+                        {{bolivarXDollar | currency : 'VES': vesCurrency}}
+                    </p>
+                </ion-text>
+            </ion-item>
+
+
+            <ion-item class="px-16"
+                      lines="none">
+
+                <ion-label class="strong">{{'general.total' | translate}}</ion-label>
+
+                <ion-text slot="end">
+                    <p class="ion-text-end">
+                        {{total | currency}}
+                    </p>
+                    <p class="ion-text-end">
+                        {{(total * bolivarXDollar) | currency : 'VES': vesCurrency}}
+                    </p>
+                </ion-text>
+
+            </ion-item>
+        </ion-card>
+
+    </div>
+
+</ion-content>

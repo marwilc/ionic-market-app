@@ -1,0 +1,136 @@
+h1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+h2 {
+    font-size: 15px;
+    margin: 0;
+}
+
+p {
+    font-size: 13px;
+    margin: 0;
+}
+
+a {
+    font-size: 13px;
+    text-decoration: none;
+}
+.container {
+    padding: 15px;
+}
+
+.section {
+    border-bottom: 1px solid var(--ion-color-amazon-gray-1);
+}
+
+.title {
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.line {
+    width: 1px;
+    height: 20px;
+    background-color: var(--ion-color-amazon-gray-2);
+    margin: 0;
+}
+
+ion-icon {
+    font-size: 24px;
+}
+
+.option {
+    justify-content: center;
+    margin-top: 10px;
+    border: 1px solid var(--ion-color-amazon-gray-2);
+    border-radius: 50px;
+    width: 130px;
+    height: 35px;
+}
+
+.option2 {
+    justify-content: center;
+    margin-top: 10px;
+    border: 1px solid var(--ion-color-amazon-gray-2);
+    border-radius: 50px;
+    width: 130px;
+    height: 35px;
+
+    ion-icon {
+        color: var(--ion-color-amazon-gray-2);
+    }
+}
+
+.dark {
+    color: black !important;
+}
+
+.division {
+    width: 1px;
+    height: 33px;
+    background-color: var(--ion-color-amazon-gray-2);
+}
+
+.product-list {
+    align-items: flex-start;
+    img {
+        object-fit: cover;
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.button-add {
+    margin-top: 10px;
+    ion-button {
+        text-transform: unset;
+        width: 150px;
+    }
+}
+
+.slide {
+    margin-top: 5px;
+    a {
+        font-size: 13px;
+    }
+    img {
+        width: 140px;
+        height: 140px;
+    }
+
+    ion-slide {
+        border: 1px solid var(--ion-color-amazon-gray-2);
+        border-radius: 10px;
+        padding: 10px;
+    }
+}
+
+.content-grid {
+    margin: 0 10px 10px 0;
+
+    ion-icon {
+        font-size: 24px;
+        float: right;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    img {
+        object-fit: cover;
+        width: 120px;
+        height: 120px;
+    }
+    ion-button {
+        text-transform: unset;
+        width: 100%;
+    }
+}

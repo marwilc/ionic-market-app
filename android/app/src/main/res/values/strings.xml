@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Soloaunclick</string>
+    <string name="title_activity_main">Soloaunclick</string>
+    <string name="package_name">com.dev.soloaunclick</string>
+    <string name="custom_url_scheme">com.dev.soloaunclick</string>
+</resources>

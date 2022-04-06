@@ -1,0 +1,107 @@
+<form [formGroup]="billingForm"
+      (ngSubmit)="accept()">
+
+    <div class="input mb-16"
+         [ngClass]="{'input-invalid': billingForm.get('name').invalid && billingForm.get('name').touched}">
+        <ion-label>{{'general.nameAndSurname' | translate}}</ion-label>
+        <ion-input [placeholder]="'Juan Perez'"
+                   formControlName="name">
+        </ion-input>
+        <app-ion-error *ngIf="billingForm.get('name').errors && billingForm.get('name').touched">
+            <span ionError>
+                {{ billingForm.get('name') | formErrorMessage: billingForm.get('name').value | translate }}
+            </span>
+        </app-ion-error>
+
+    </div>
+
+    <div fxLayout="row">
+
+        <div class="input"
+             fxFlex="40">
+            <ion-label>{{'general.type' | translate}}</ion-label>
+            <ion-select [value]="docPrefix"
+                        (ionChange)="onDocPrefixChange($event)">
+                <ion-select-option [value]="prefix"
+                                   *ngFor="let prefix of docsPrefix">
+                    {{prefix}}
+                </ion-select-option>
+            </ion-select>
+        </div>
+
+
+        <div class="input mb-16"
+             [ngClass]="{'input-invalid': billingForm.get('identityDocument').invalid && billingForm.get('identityDocument').touched}"
+             fxFlex>
+            <ion-label>{{'general.document' | translate}}</ion-label>
+            <ion-input [placeholder]="'55555555' | translate"
+                       type="number"
+                       formControlName="identityDocument">
+            </ion-input>
+            <app-ion-error *ngIf="billingForm.get('identityDocument').errors && billingForm.get('identityDocument').touched">
+                <span ionError>
+                    {{ billingForm.get('identityDocument') | formErrorMessage: billingForm.get('identityDocument').value | translate }}
+                </span>
+            </app-ion-error>
+        </div>
+
+    </div>
+
+
+    <div class="input mb-16"
+         [ngClass]="{'input-invalid': billingForm.get('phone').invalid && billingForm.get('phone').touched}">
+        <ion-label>{{'general.phone' | translate}}</ion-label>
+        <ion-input [placeholder]="'04129999999' | translate"
+                   type="number"
+                   formControlName="phone">
+        </ion-input>
+        <app-ion-error *ngIf="billingForm.get('phone').errors && billingForm.get('phone').touched">
+            <span ionError>
+                {{ billingForm.get('phone') | formErrorMessage: billingForm.get('phone').value | translate }}
+            </span>
+        </app-ion-error>
+    </div>
+
+    <div class="input mb-16"
+         [ngClass]="{'input-invalid': billingForm.get('address').invalid && billingForm.get('address').touched}">
+        <ion-label>{{'general.address' | translate}}</ion-label>
+        <ion-textarea [placeholder]="'av, bolivar'| translate"
+                      formControlName="address">
+        </ion-textarea>
+        <app-ion-error *ngIf="billingForm.get('address').errors && billingForm.get('address').touched">
+            <span ionError>
+                {{ billingForm.get('address') | formErrorMessage: billingForm.get('address').value | translate }}
+            </span>
+        </app-ion-error>
+
+    </div>
+
+    <div class="input mb-16"
+         [ngClass]="{'input-invalid': billingForm.get('optionalRequirement').invalid && billingForm.get('optionalRequirement').touched}">
+        <ion-label>
+            {{'general.doYouHaveAnyRequirementsWithYourOrder' | translate}}
+        </ion-label>
+        <ion-textarea formControlName="optionalRequirement">
+        </ion-textarea>
+
+        <app-ion-error *ngIf="billingForm.get('optionalRequirement').errors && billingForm.get('optionalRequirement').touched">
+            <span ionError>
+                {{ billingForm.get('optionalRequirement') | formErrorMessage: billingForm.get('optionalRequirement').value | translate }}
+            </span>
+        </app-ion-error>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutGap="5px"
+         class="ion-align-items-center ion-margin-top">
+        <ion-checkbox formControlName="sendInvoice">
+        </ion-checkbox>
+        <ion-label>{{'general.doNotSendAnInvoice' | translate}}</ion-label>
+    </div>
+
+    <ion-button type="submit"
+                class="btn">
+        {{'general.accept' | translate}}
+    </ion-button>
+
+</form>

@@ -1,0 +1,114 @@
+h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
+
+p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 16px;
+}
+
+ion-list {
+    border-bottom: 1px solid var(--ion-color-amazon-gray-1);
+}
+
+.date {
+    --padding-top: 0;
+    --padding-bottom: 13px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+
+ion-item {
+    --background: rgb(235, 235, 235);
+    --border-radius: 15px;
+    margin-top: 10px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    --padding-start: 10px;
+    overflow: unset;
+}
+
+.day {
+    h2 {
+        font-size: 14px;
+    }
+}
+
+.radio-day {
+    margin-inline-end: 5px;
+    --padding-start: 10px;
+}
+
+.total {
+    --padding-top: 10px;
+}
+
+.time {
+    --padding-top: 0;
+    --padding-bottom: 0;
+}
+
+.no-border {
+    border-bottom: none;
+}
+
+.tips {
+    margin-top: 25px;
+
+    h2 {
+        margin-bottom: 10px;
+        color: var(--ion-color-primary);
+    }
+
+    ion-text {
+        background-color: var(--ion-color-amazon-gray-1);
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .selected-tip {
+        background-color: #defad9;
+    }
+}
+
+.edited-tips {
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-tips {
+    margin-top: 10px;
+    color: var(--ion-color-primary);
+}
+
+.total-tips {
+    color: var(--ion-color-amazon-links-green);
+    margin-top: 10px;
+}
+
+ion-button {
+    margin-top: 20px;
+    text-transform: unset;
+    float: right;
+}
+
+.item.sc-ion-label-md-h,
+.item .sc-ion-label-md-h {
+    white-space: unset;
+}
+
+ion-item.selected-radio {
+    --background: #defad9;
+}
